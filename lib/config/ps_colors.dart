@@ -16,30 +16,30 @@ class PsColors {
   ///
   /// Primary Colors
   ///
-  static Color primary50 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary100 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary200 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary300 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary400 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary500 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary600 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary700 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary800 = const Color.fromRGBO(46, 53, 87, 1);
-  static Color primary900 = const Color.fromRGBO(46, 53, 87, 1);
+  static Color primary50 = const Color.fromRGBO(241, 242, 244, 1);
+  static Color primary100 = const Color.fromRGBO(241, 242, 244, 1);
+  static Color primary200 = const Color.fromRGBO(241, 242, 244, 1);
+  static Color primary300 = const Color.fromRGBO(241, 242, 244, 1);
+  static Color primary400 = const Color.fromRGBO(47, 128, 236, 1);
+  static Color primary500 = const Color.fromRGBO(12, 51, 50, 1);
+  static Color primary600 = const Color.fromRGBO(47, 128, 236, 1);
+  static Color primary700 = const Color.fromRGBO(47, 128, 236, 1);
+  static Color primary800 = const Color.fromRGBO(47, 128, 236, 1);
+  static Color primary900 = const Color.fromRGBO(47, 128, 236, 1);
 
   ///
   /// Text Colors
   ///
-  static Color text50 = const Color(0xFFF9FAFB);
-  static Color text100 = const Color(0xFFF3F4F6);
-  static Color text200 = const Color(0xFFE5E7EB);
-  static Color text300 = const Color(0xFFD1D5DB);
-  static Color text400 = const Color(0xFF9CA3AF);
-  static Color text500 = const Color(0xFF6B7280);
-  static Color text600 = const Color(0xFF4B5563);
-  static Color text700 = const Color(0xFF374151);
-  static Color text800 = const Color(0xFF1F2937);
-  static Color text900 = const Color(0xFF111827);
+  static Color text50 = const Color.fromRGBO(241, 242, 244, 1);
+  static Color text100 = const Color.fromRGBO(241, 242, 244, 1);
+  static Color text200 = const Color.fromRGBO(241, 242, 244, 1);
+  static Color text300 = const Color.fromRGBO(241, 242, 244, 1);
+  static Color text400 = const Color.fromRGBO(12, 51, 50, 1);
+  static Color text500 = const Color.fromRGBO(12, 51, 50, 1);
+  static Color text600 = const Color.fromRGBO(12, 51, 50, 1);
+  static Color text700 = const Color.fromRGBO(12, 51, 50, 1);
+  static Color text800 = const Color.fromRGBO(12, 51, 50, 1);
+  static Color text900 = const Color.fromRGBO(12, 51, 50, 1);
 
   ///
   /// Accent Colors

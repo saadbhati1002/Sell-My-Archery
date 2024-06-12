@@ -77,7 +77,7 @@ class DrawerHeaderWidget extends StatelessWidget {
         ],
       ),
       decoration: BoxDecoration(
-        color: PsColors.primary50,
+        color: Colors.white,
       ),
     );
   }

@@ -79,6 +79,7 @@ class _AllSearchTextBoxWidgetState extends State<AllSearchTextBoxWidget> {
             controller: widget.textEditingController,
             style: Theme.of(context).textTheme.bodyLarge,
             decoration: InputDecoration(
+              fillColor: Colors.white,
               contentPadding: const EdgeInsets.only(
                 left: PsDimens.space12,
                 top: PsDimens.space10,
@@ -126,7 +127,7 @@ class _AllSearchTextBoxWidgetState extends State<AllSearchTextBoxWidget> {
           height: PsDimens.space44,
           decoration: BoxDecoration(
             color: Utils.isLightMode(context)
-                ? PsColors.text50
+                ? Colors.grey[100]
                 : PsColors.achromatic900,
             borderRadius: BorderRadius.circular(PsDimens.space8),
           ),

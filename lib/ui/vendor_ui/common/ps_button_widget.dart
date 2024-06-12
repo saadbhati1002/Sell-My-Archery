@@ -58,7 +58,11 @@ class _PSButtonWidgetState extends State<PSButtonWidget> {
               child: Text(widget.titleText,
                   textAlign: widget.titleTextAlign,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                      color:(widget.textColorData != null) ? widget.textColorData : Utils.isLightMode(context) ? PsColors.achromatic50 : PsColors.achromatic800,
+                      color: (widget.textColorData != null)
+                          ? widget.textColorData
+                          : Utils.isLightMode(context)
+                              ? PsColors.achromatic50
+                              : PsColors.achromatic800,
                       fontSize: 14) //PsColors.achromatic50),
                   ),
             ),
@@ -118,10 +122,10 @@ class _PSButtonWithIconWidgetState extends State<PSButtonWithIconWidget> {
     return Container(
       width: widget.width, //MediaQuery.of(context).size.width,
       height: widget.height ?? 40,
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(4), color: _color),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4), color: PsColors.primary400),
       child: Material(
-        color: _color,
+        color: PsColors.primary400,
         type: MaterialType.card,
         clipBehavior: Clip.antiAlias,
         shape: const BeveledRectangleBorder(
