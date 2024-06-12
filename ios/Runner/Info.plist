@@ -39,7 +39,7 @@
 			<string>Bundle ID</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>buysell1.page.link</string>
+				<string>com.sellmyarchary</string>
 			</array>
 		</dict>
 		<dict>
@@ -47,7 +47,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.000000000000-00000000000000000000000000000000</string>
+				<string>app-1-828252791763-ios-c830ec31b8857efe194526</string>
 			</array>
 		</dict>
 		<dict>
@@ -55,8 +55,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb000000000000</string>
-				<string>com.googleusercontent.apps.000000000000-00000000000000000000000000000000</string>
+				<string>com.googleusercontent.apps.828252791763-vh77tug3i95ralktb5ethssc2m826eju</string>
 			</array>
 		</dict>
 	</array>
