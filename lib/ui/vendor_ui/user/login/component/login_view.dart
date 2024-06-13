@@ -131,11 +131,11 @@ class _LoginViewState extends State<LoginView> {
                   onFbSignInSelected: widget.onFbSignInSelected,
                   callBackAfterLoginSuccess: callBackAfterLoginSuccess,
                 ),
-              if (Utils.isAppleSignInAvailable == 1 && Platform.isIOS)
-                CustomLoginWithAppleIdWidget(
-                  onAppleIdSignInSelected: widget.onGoogleSignInSelected,
-                  callBackAfterLoginSuccess: callBackAfterLoginSuccess,
-                ),
+              // if (Utils.isAppleSignInAvailable == 1 && Platform.isIOS)
+              //   CustomLoginWithAppleIdWidget(
+              //     onAppleIdSignInSelected: widget.onGoogleSignInSelected,
+              //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
+              //   ),
               const SizedBox(
                 height: PsDimens.space44,
               ),
