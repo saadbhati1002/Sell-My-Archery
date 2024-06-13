@@ -12,6 +12,8 @@ import 'package:psxmpc/config/ps_config.dart';
 import 'package:psxmpc/core/vendor/api/ps_api_service.dart';
 import 'package:psxmpc/core/vendor/provider/common/notification_provider.dart';
 import 'package:psxmpc/core/vendor/provider/item_location/item_location_provider.dart';
+import 'package:psxmpc/core/vendor/repository/item_location_repository.dart';
+import 'package:psxmpc/ui/vendor_ui/common/base/ps_widget_with_appbar_no_app_bar_title.dart';
 
 import '../../../../config/ps_colors.dart';
 import '../../../../config/route/route_paths.dart';
@@ -374,7 +376,11 @@ class _AppLoadingViewState extends State<AppLoadingView> {
     // }
     final PsValueHolder valueHolder =
         Provider.of<PsValueHolder>(context, listen: false);
-
+    await _itemLocationProvider.replaceItemLocationData(
+        '',
+        'product_list__category_all'.tr,
+        valueHolder.defaultlocationLat!,
+        valueHolder.defaultlocationLng!);
     if (valueHolder.isToShowIntroSlider == true) {
       Navigator.pushReplacementNamed(context, RoutePaths.introSlider,
           arguments: false);
@@ -563,7 +569,8 @@ class _AppLoadingViewState extends State<AppLoadingView> {
   late PsValueHolder? valueHolder;
 
   late AppLocalization langProvider;
-
+  late ItemLocationProvider _itemLocationProvider;
+  ItemLocationRepository? repo2;
   @override
   Widget build(BuildContext context) {
     repo1 = Provider.of<AppInfoRepository>(context);
@@ -576,86 +583,129 @@ class _AppLoadingViewState extends State<AppLoadingView> {
     if (valueHolder == null) {
       return Container();
     }
+    langProvider = Provider.of<AppLocalization>(context);
+    repo2 = Provider.of<ItemLocationRepository>(context);
+    valueHolder = Provider.of<PsValueHolder?>(context);
+    print(
+        '............................Build Item Location UI Again ............................');
 
-    return MultiProvider(
-        providers: <SingleChildWidget>[
-          ChangeNotifierProvider<ClearAllDataProvider?>(
-              lazy: false,
-              create: (BuildContext context) {
-                clearAllDataProvider = ClearAllDataProvider(
-                    repo: clearAllDataRepository, psValueHolder: valueHolder);
+    return PsWidgetWithAppBarNoAppBarTitle<ItemLocationProvider>(
+      initProvider: () {
+        return ItemLocationProvider(repo: repo2, psValueHolder: valueHolder);
+      },
+      onProviderReady: (ItemLocationProvider provider) {
+        provider.loadDataList(
+            requestBodyHolder: provider.latestLocationParameterHolder,
+            requestPathHolder: RequestPathHolder(
+                loginUserId: Utils.checkUserLoginId(provider.psValueHolder!),
+                languageCode: langProvider.currentLocale.languageCode));
+        _itemLocationProvider = provider;
+      },
+      builder: (BuildContext context, ItemLocationProvider _provider,
+          Widget? child) {
+        final PsValueHolder valueHolder = Provider.of<PsValueHolder>(context);
+        final ItemLocationProvider _provider =
+            Provider.of(context, listen: false);
+        // print("ssad bhati");
+        // print(valueHolder.locationId);
+        // print(valueHolder.locactionName);
+        // print(valueHolder.locationLat);
+        // print(valueHolder.locationLng);
+        if (valueHolder.locationId != null && valueHolder.locationId != '') {
+          _provider.itemLocationId = valueHolder.locationId;
+          _provider.itemLocationName = valueHolder.locactionName;
+          _provider.itemLocationLat = valueHolder.locationLat;
+          _provider.itemLocationLng = valueHolder.locationLng;
+        } else {
+          _provider.itemLocationId = "";
+          _provider.itemLocationName = "All";
+          _provider.itemLocationLat = "28.7041";
+          _provider.itemLocationLng = "77.1025";
+        }
 
-                return clearAllDataProvider;
-              }),
-          ChangeNotifierProvider<LanguageProvider>(
-            lazy: false,
-            create: (BuildContext context) {
-              languageProvider = LanguageProvider(repo: languageRepository);
+        return MultiProvider(
+            providers: <SingleChildWidget>[
+              ChangeNotifierProvider<ClearAllDataProvider?>(
+                  lazy: false,
+                  create: (BuildContext context) {
+                    clearAllDataProvider = ClearAllDataProvider(
+                        repo: clearAllDataRepository,
+                        psValueHolder: valueHolder);
 
-              return languageProvider;
-            },
-          ),
-          ChangeNotifierProvider<MobileColorProvider?>(
-              lazy: false,
-              create: (BuildContext context) {
-                mobileColorProvider =
-                    MobileColorProvider(repo: mobileColorRepo);
+                    return clearAllDataProvider;
+                  }),
+              ChangeNotifierProvider<LanguageProvider>(
+                lazy: false,
+                create: (BuildContext context) {
+                  languageProvider = LanguageProvider(repo: languageRepository);
 
-                return mobileColorProvider;
-              }),
-          ChangeNotifierProvider<UserProvider>(
-            lazy: false,
-            create: (BuildContext context) {
-              final UserProvider provider = UserProvider(
-                  repo: Provider.of<UserRepository>(context, listen: false),
-                  psValueHolder: valueHolder);
-              if (provider.psValueHolder!.headerToken == null ||
-                  provider.psValueHolder!.headerToken == '') {
-                Utils.saveHeaderInfoAndToken(provider);
-              }
-              return provider;
-            },
-          ),
-          ChangeNotifierProvider<NotificationProvider>(
-              lazy: false,
-              create: (BuildContext context) {
-                final NotificationProvider provider = NotificationProvider(
-                    repo: Provider.of<NotificationRepository>(context,
-                        listen: false),
-                    psValueHolder: valueHolder);
-                if (provider.psValueHolder!.deviceToken == null ||
-                    provider.psValueHolder!.deviceToken == '') {
-                  Utils.saveDeviceToken(provider, langProvider);
-                } else {
-                  print(
-                      'Notification Token is already registered. Notification Setting : true.');
+                  return languageProvider;
+                },
+              ),
+              ChangeNotifierProvider<MobileColorProvider?>(
+                  lazy: false,
+                  create: (BuildContext context) {
+                    mobileColorProvider =
+                        MobileColorProvider(repo: mobileColorRepo);
+
+                    return mobileColorProvider;
+                  }),
+              ChangeNotifierProvider<UserProvider>(
+                lazy: false,
+                create: (BuildContext context) {
+                  final UserProvider provider = UserProvider(
+                      repo: Provider.of<UserRepository>(context, listen: false),
+                      psValueHolder: valueHolder);
+                  if (provider.psValueHolder!.headerToken == null ||
+                      provider.psValueHolder!.headerToken == '') {
+                    Utils.saveHeaderInfoAndToken(provider);
+                  }
+                  return provider;
+                },
+              ),
+              ChangeNotifierProvider<NotificationProvider>(
+                  lazy: false,
+                  create: (BuildContext context) {
+                    final NotificationProvider provider = NotificationProvider(
+                        repo: Provider.of<NotificationRepository>(context,
+                            listen: false),
+                        psValueHolder: valueHolder);
+                    if (provider.psValueHolder!.deviceToken == null ||
+                        provider.psValueHolder!.deviceToken == '') {
+                      Utils.saveDeviceToken(provider, langProvider);
+                    } else {
+                      print(
+                          'Notification Token is already registered. Notification Setting : true.');
+                    }
+                    return provider;
+                  }),
+              ChangeNotifierProvider<AppInfoProvider>(
+                  lazy: false,
+                  create: (BuildContext context) {
+                    provider = AppInfoProvider(
+                        repo: repo1, psValueHolder: valueHolder);
+                    callDateFunction(provider, clearAllDataProvider,
+                        languageProvider, context);
+
+                    return provider;
+                  }),
+            ],
+            child: Consumer<MobileColorProvider>(
+              builder: (BuildContext context,
+                  MobileColorProvider mobileColorProvider, Widget? child) {
+                if (mobileColorProvider.hasData) {
+                  print(_mobileColor);
+                  if (_mobileColor != null) {
+                    PsColors.replaceColor(_mobileColor!);
+                  } else {
+                    PsColors.replaceColor(
+                        mobileColorProvider.getMobileColor.data!);
+                  }
                 }
-                return provider;
-              }),
-          ChangeNotifierProvider<AppInfoProvider>(
-              lazy: false,
-              create: (BuildContext context) {
-                provider =
-                    AppInfoProvider(repo: repo1, psValueHolder: valueHolder);
-                callDateFunction(
-                    provider, clearAllDataProvider, languageProvider, context);
-
-                return provider;
-              }),
-        ],
-        child: Consumer<MobileColorProvider>(
-          builder: (BuildContext context,
-              MobileColorProvider mobileColorProvider, Widget? child) {
-            if (mobileColorProvider.hasData) {
-              print(_mobileColor);
-              if (_mobileColor != null) {
-                PsColors.replaceColor(_mobileColor!);
-              } else {
-                PsColors.replaceColor(mobileColorProvider.getMobileColor.data!);
-              }
-            }
-            return CustomLoadingUi();
-          },
-        ));
+                return CustomLoadingUi();
+              },
+            ));
+      },
+    );
   }
 }

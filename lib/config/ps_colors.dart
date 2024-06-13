@@ -13,8 +13,10 @@ import '../core/vendor/viewobject/mobile_color.dart';
 class PsColors {
   PsColors._();
 
+
   ///
   /// Primary Colors
+  
   ///
   static Color primary50 = const Color.fromRGBO(241, 242, 244, 1);
   static Color primary100 = const Color.fromRGBO(241, 242, 244, 1);

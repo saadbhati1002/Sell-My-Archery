@@ -17,35 +17,32 @@ class LoadingUi extends StatelessWidget {
       ),
     );
     return Container(
-        height: 400,
+        height: MediaQuery.of(context).size.height * 1,
+        width: MediaQuery.of(context).size.width * 1,
         color: Utils.isLightMode(context)
             ? PsColors.achromatic50
             : PsColors.achromatic800,
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _imageWidget,
-                const SizedBox(
-                  height: PsDimens.space16,
-                ),
-                Text("Sell My Archery",
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Utils.isLightMode(context)
-                              ? PsColors.achromatic700
-                              : PsColors.achromatic50,
-                        )),
-                const SizedBox(
-                  height: PsDimens.space8,
-                ),
-                Container(
-                    padding: const EdgeInsets.all(PsDimens.space16),
-                    child: PsSquareProgressWidget()),
-              ],
-            )
+            _imageWidget,
+            const SizedBox(
+              height: PsDimens.space16,
+            ),
+            Text("Sell My Archery",
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Utils.isLightMode(context)
+                          ? PsColors.achromatic700
+                          : PsColors.achromatic50,
+                    )),
+            const SizedBox(
+              height: PsDimens.space8,
+            ),
+            Container(
+                padding: const EdgeInsets.all(PsDimens.space16),
+                child: PsSquareProgressWidget()),
           ],
         ));
   }
