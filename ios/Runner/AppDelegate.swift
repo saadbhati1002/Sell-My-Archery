@@ -72,7 +72,7 @@ import google_mobile_ads
     if FirebaseApp.app() == nil {
         FirebaseApp.configure()
     }
-    GMSServices.provideAPIKey("AI00000000000000000000-0000000000000000")
+    GMSServices.provideAPIKey("AIzaSyDcr5WtDuAsJS2aZRe-5OTD39sZ6iUrHYk")
     
     GeneratedPluginRegistrant.register(with: self)
 
