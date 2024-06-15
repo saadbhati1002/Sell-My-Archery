@@ -108,7 +108,7 @@ class DrawerWidgetState<T extends DrawerWidgetList>
                   widget.updateSelectedIndexWithAnimation,
             ),
             CustomRateThisAppMenuWidget(),
-            CustomShareThisAppMenuWidget(),
+            // CustomShareThisAppMenuWidget(),
             const Divider(
               height: PsDimens.space1,
             ),
