@@ -46,7 +46,11 @@ class ExploreButton extends StatelessWidget {
             Navigator.pop(context);
           } else if (psValueHolder.isForceLogin! &&
               Utils.checkUserLoginId(psValueHolder) == 'nologinuser') {
-            Navigator.pushReplacementNamed(context, RoutePaths.login_container);
+            Navigator.pushNamed(
+              context,
+              RoutePaths.home,
+            );
+            // Navigator.pushReplacementNamed(context, RoutePaths.login_container);
           } else if (psValueHolder.isLanguageConfig! &&
               psValueHolder.showOnboardLanguage) {
             Navigator.pushNamed(

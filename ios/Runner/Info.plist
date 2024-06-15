@@ -22,18 +22,41 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+		<key>NSAppleMusicUsageDescription</key>
+	<string>Sell My Archery requires to access apple music media library for item upload.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Sell My Archery requires bluetooth access for Google Ads</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Sell My Archery requires bluetooth access for Google Ads</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Sell My Archery requires to acess calendar to get date.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Sell My Archery would like to use your camera to upload your profile photo and item photo.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Sell My Archery requires to access contact for sharing posts.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Sell My Archery requires user location to tag when user upload post.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Sell My Archery requires user location to tag when user upload post.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Sell My Archery requires user location to tag when user upload post.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Sell My Archery requires user location to tag when user upload post.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app does not require access to the microphone.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Sell My Archery requires for the map service.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app requires access to the photo library to upload your profile photo and item photo.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to the photo library to upload your profile photo and item photo.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Sell My Archery requires speech recognition for apple.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This app uses tracking data to show you personalized ads.</string>
+	
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.sellmyarchary.chirag.braintree</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.sellmyarchary.chirag.braintree</string>
-			</array>
-		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
@@ -84,39 +107,7 @@
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 	</dict>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires to access apple music media library for item upload.</string>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires bluetooth access for Google Ads</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires bluetooth access for Google Ads</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires to acess calendar to get date.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your camera to upload your profile photo and item photo.</string>
-	<key>NSContactsUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires to access contact for sharing posts.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires user location to tag when user upload post.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires user location to tag when user upload post.</string>
-	<key>NSLocationUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires user location to tag when user upload post.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires user location to tag when user upload post.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This app does not require access to the microphone.</string>
-	<key>NSMotionUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires for the map service.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This app requires access to the photo library to upload your profile photo and item photo.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires access to the photo library to upload your profile photo and item photo.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires speech recognition for apple.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>This app uses tracking data to show you personalized ads.</string>
-	<key>SKAdNetworkItems</key>
+    <key>SKAdNetworkItems</key>
 	<array>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
