@@ -35,13 +35,13 @@
 	<key>NSContactsUsageDescription</key>
 	<string>Sell My Archery requires to access contact for sharing posts.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Sell My Archery requires user location to tag when user upload post.</string>
+	<string>Sell My Archery requires user location to show product according to your location.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Sell My Archery requires user location to tag when user upload post.</string>
+	<string>Sell My Archery requires user location to show product according to your location.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Sell My Archery requires user location to tag when user upload post.</string>
+	<string>Sell My Archery requires user location to show product according to your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Sell My Archery requires user location to tag when user upload post.</string>
+	<string>Sell My Archery requires user location to show product according to your location.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app does not require access to the microphone.</string>
 	<key>NSMotionUsageDescription</key>
