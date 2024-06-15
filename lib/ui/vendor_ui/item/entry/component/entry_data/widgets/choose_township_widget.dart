@@ -22,28 +22,31 @@ class ChooseTownshipDropDownWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PsDropdownBaseWithControllerWidget(
-        title: 'item_entry__location_township'.tr,
+        title: 'District',
         textEditingController: townshipController,
-        hintText: 'item_entry__select_township'.tr,
+        hintText: 'District',
         isStar: isMandatory,
         onTap: () async {
           FocusScope.of(context).requestFocus(FocusNode());
           final ItemEntryProvider provider =
               Provider.of<ItemEntryProvider>(context, listen: false);
-          if (provider.itemLocationId != '' && provider.itemLocationId != null) {
+          if (provider.itemLocationId != '' &&
+              provider.itemLocationId != null) {
             final dynamic itemLocationTownshipResult =
                 await Navigator.pushNamed(
                     context, RoutePaths.itemLocationTownship,
-                    arguments: TownshipIntentHolder(selectedTownshipName: townshipController.text, cityId: provider.itemLocationId!));
+                    arguments: TownshipIntentHolder(
+                        selectedTownshipName: townshipController.text,
+                        cityId: provider.itemLocationId!));
 
             if (itemLocationTownshipResult != null &&
                 itemLocationTownshipResult is ItemLocationTownship) {
               provider.itemLocationTownshipId = itemLocationTownshipResult.id;
               townshipController.text =
                   itemLocationTownshipResult.townshipName!;
-              if (userInputAddressController.text == '')    
-              updateMap(double.parse(itemLocationTownshipResult.lat ?? '0'),
-                  double.parse(itemLocationTownshipResult.lng ?? '0'), '');
+              if (userInputAddressController.text == '')
+                updateMap(double.parse(itemLocationTownshipResult.lat ?? '0'),
+                    double.parse(itemLocationTownshipResult.lng ?? '0'), '');
             }
           } else {
             showDialog<dynamic>(

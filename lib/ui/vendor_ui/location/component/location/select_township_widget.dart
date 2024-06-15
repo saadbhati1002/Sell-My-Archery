@@ -21,7 +21,7 @@ class SelectTownshipWidget extends StatelessWidget {
             right: PsDimens.space16,
             top: PsDimens.space16),
         child: PsTextFieldWidgetWithIcon2(
-          hintText: 'select_township'.tr,
+          hintText: "Select District",
           textEditingController: searchTownshipNameController,
           onTap: () async {
             if (_provider.itemLocationId != '') {
@@ -35,10 +35,10 @@ class SelectTownshipWidget extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return ErrorDialog(
-                      message: 'home_search__choose_city_first'.tr,
+                      message: "Choose State First",
                     );
                   });
-              const ErrorDialog(message: 'Choose City first');
+              const ErrorDialog(message: 'Choose State first');
             }
           },
         ));

@@ -62,49 +62,49 @@ class UseCurrentLocationWidgetState<T extends UseCurrentLocationWidget>
 
   // Platform messages are asynchronous, so we initialize in an async method.
   dynamic _initCurrentLocation() {
-    Geolocator.checkPermission().then((LocationPermission permission) {
-      if (permission == LocationPermission.denied) {
-        Geolocator.requestPermission().then((LocationPermission permission) {
-          if (permission == LocationPermission.denied) {
-          } else {
-            Geolocator
-                    //..forceAndroidLocationManager = !widget.androidFusedLocation
-                    .getCurrentPosition(
-                        desiredAccuracy: LocationAccuracy.medium,
-                        forceAndroidLocationManager: false)
-                .then((Position position) {
-              print(position);
-              //     if (mounted) {
-              //  setState(() {
-              _currentPosition = position;
-              loadAddress();
-              //    });
-              // _currentPosition = position;
+    // Geolocator.checkPermission().then((LocationPermission permission) {
+    //   if (permission == LocationPermission.denied) {
+    //     Geolocator.requestPermission().then((LocationPermission permission) {
+    //       if (permission == LocationPermission.denied) {
+    //       } else {
+    //         Geolocator
+    //                 //..forceAndroidLocationManager = !widget.androidFusedLocation
+    //                 .getCurrentPosition(
+    //                     desiredAccuracy: LocationAccuracy.medium,
+    //                     forceAndroidLocationManager: false)
+    //             .then((Position position) {
+    //           print(position);
+    //           //     if (mounted) {
+    //           //  setState(() {
+    //           _currentPosition = position;
+    //           loadAddress();
+    //           //    });
+    //           // _currentPosition = position;
 
-              //    }
-            }).catchError((Object e) {
-              print(e);
-            });
-          }
-        });
-      } else {
-        Geolocator
-                //..forceAndroidLocationManager = !widget.androidFusedLocation
-                .getCurrentPosition(
-                    desiredAccuracy: LocationAccuracy.medium,
-                    forceAndroidLocationManager: !widget.androidFusedLocation)
-            .then((Position position) {
-          //    if (mounted) {
-          setState(() {
-            _currentPosition = position;
-            loadAddress();
-          });
-          //    }
-        }).catchError((Object e) {
-          print(e);
-        });
-      }
-    });
+    //           //    }
+    //         }).catchError((Object e) {
+    //           print(e);
+    //         });
+    //       }
+    //     });
+    //   } else {
+    //     Geolocator
+    //             //..forceAndroidLocationManager = !widget.androidFusedLocation
+    //             .getCurrentPosition(
+    //                 desiredAccuracy: LocationAccuracy.medium,
+    //                 forceAndroidLocationManager: !widget.androidFusedLocation)
+    //         .then((Position position) {
+    //       //    if (mounted) {
+    //       setState(() {
+    //         _currentPosition = position;
+    //         loadAddress();
+    //       });
+    //       //    }
+    //     }).catchError((Object e) {
+    //       print(e);
+    //     });
+    //   }
+    // });
   }
 
   @override

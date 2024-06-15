@@ -80,7 +80,7 @@ class _FilterCityViewState extends State<FilterCityView>
         _requestPop();
       },
       child: PsWidgetWithAppBar<ItemLocationProvider>(
-          appBarTitle: 'item_entry__location'.tr,
+          appBarTitle: 'State',
           initProvider: () {
             return ItemLocationProvider(
                 repo: repo1, psValueHolder: valueHolder);

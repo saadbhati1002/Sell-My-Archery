@@ -139,6 +139,7 @@ class PsDynamicWidget extends StatelessWidget {
         PsWidgetConst.product_price: CustomPriceWidget(),
         PsWidgetConst.product_location: LocationWidget(),
         PsWidgetConst.product_description: CustomDetailInfoView(),
+
         PsWidgetConst.product_details_info: CustomDescriptionWidget(),
 
         // PsWidgetConst.product_safety_tips_tile: CustomSafetyTipsTileView(),

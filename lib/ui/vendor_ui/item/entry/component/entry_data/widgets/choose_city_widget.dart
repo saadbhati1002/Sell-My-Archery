@@ -22,8 +22,8 @@ class ChooseCityDropDownWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PsDropdownBaseWithControllerWidget(
-        title: 'item_entry__location'.tr,
-        hintText: 'item_entry__select_location'.tr,
+        title: "State",
+        hintText: "State",
         textEditingController: cityController,
         isStar: isMandatory,
         onTap: () async {
@@ -43,8 +43,8 @@ class ChooseCityDropDownWidget extends StatelessWidget {
             townshipController.text = '';
             provider.changeTownshipName('');
             if (userInputAddressController.text == '')
-            updateMap(double.parse(itemLocationResult.lat ?? '0'),
-                double.parse(itemLocationResult.lng ?? '0'), '');
+              updateMap(double.parse(itemLocationResult.lat ?? '0'),
+                  double.parse(itemLocationResult.lng ?? '0'), '');
           }
         });
   }

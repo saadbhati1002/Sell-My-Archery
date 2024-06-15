@@ -84,7 +84,7 @@ class _ItemLocationViewState extends State<ItemLocationView> {
       final ItemLocationProvider _provider =
           Provider.of(context, listen: false);
       if (valueHolder.locationId != null && valueHolder.locationId != '') {
-        searchCityNameController.text = valueHolder.locactionName ?? '';
+        // searchCityNameController.text = valueHolder.locactionName ?? '';
         _provider.itemLocationId = valueHolder.locationId;
         _provider.itemLocationName = valueHolder.locactionName;
         _provider.itemLocationLat = valueHolder.locationLat;
@@ -111,7 +111,9 @@ class _ItemLocationViewState extends State<ItemLocationView> {
                   IconButton(
                     icon: Icon(
                       Icons.close,
-                      color: Utils.isLightMode(context) ? PsColors.text800: PsColors.text50,
+                      color: Utils.isLightMode(context)
+                          ? PsColors.text800
+                          : PsColors.text50,
                     ),
                     onPressed: onClose,
                   ),
@@ -144,21 +146,21 @@ class _ItemLocationViewState extends State<ItemLocationView> {
   }
 
   Future<void> onClose() async {
-    final PsValueHolder valueHolder =Provider.of<PsValueHolder>(context, listen: false);
+    final PsValueHolder valueHolder =
+        Provider.of<PsValueHolder>(context, listen: false);
     if (_itemLocationProvider.itemLocationId == '') {
       await _itemLocationProvider.replaceItemLocationData(
           '',
           'product_list__category_all'.tr,
           valueHolder.defaultlocationLat!,
-         valueHolder.defaultlocationLng!);
+          valueHolder.defaultlocationLng!);
 
       await _itemLocationProvider.replaceItemLocationTownshipData(
-        '',
-        '',
-        'product_list__category_all'.tr,
-        valueHolder.defaultlocationLat!,
-         valueHolder.defaultlocationLng!
-      );
+          '',
+          '',
+          'product_list__category_all'.tr,
+          valueHolder.defaultlocationLat!,
+          valueHolder.defaultlocationLng!);
       Navigator.pushReplacementNamed(context, RoutePaths.home);
     } else {
       await _itemLocationProvider.replaceItemLocationData(

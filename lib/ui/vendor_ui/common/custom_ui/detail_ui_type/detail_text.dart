@@ -33,7 +33,7 @@ class DetailTextWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * .4,
+              width: MediaQuery.of(context).size.width * .44,
               child: Text(
                 customField.name!,
                 maxLines: 1,
@@ -42,11 +42,11 @@ class DetailTextWidget extends StatelessWidget {
                         ? PsColors.text900
                         : PsColors.text50,
                     fontSize: 14,
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w600),
               ),
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * .51,
+              width: MediaQuery.of(context).size.width * .47,
               child: Text(
                 element.value.valueTextController.text,
                 textAlign: TextAlign.left,

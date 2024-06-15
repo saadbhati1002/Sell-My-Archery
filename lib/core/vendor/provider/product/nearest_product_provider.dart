@@ -153,68 +153,68 @@ SingleChildWidget initNearestProductProvider(
         Position? _currentPosition;
 
         final String? loginUserId = Utils.checkUserLoginId(valueHolder);
-        Geolocator.checkPermission().then((LocationPermission permission) {
-          if (permission == LocationPermission.denied) {
-            Geolocator.requestPermission()
-                .then((LocationPermission permission) {
-              if (permission == LocationPermission.denied) {
-                //permission denied, do nothing
-              } else {
-                Geolocator.getCurrentPosition(
-                        desiredAccuracy: LocationAccuracy.medium,
-                        forceAndroidLocationManager: false)
-                    .then((Position position) {
-                  if (mounted) {
-                    // setState(() {
-                    _currentPosition = position;
-                    // });
-                    _nearestProductProvider.productNearestParameterHolder.lat =
-                        _currentPosition?.latitude.toString();
-                    _nearestProductProvider.productNearestParameterHolder.lng =
-                        _currentPosition?.longitude.toString();
-                    _nearestProductProvider.productNearestParameterHolder.mile =
-                        valueHolder.mile;
-                    _nearestProductProvider.loadDataList(
-                      requestPathHolder: RequestPathHolder(
-                          loginUserId: loginUserId,
-                          languageCode: valueHolder.languageCode),
-                      requestBodyHolder:
-                          _nearestProductProvider.productNearestParameterHolder,
-                    );
-                  }
-                }).catchError((Object e) {
-                  //
-                });
-              }
-            });
-          } else {
-            Geolocator.getCurrentPosition(
-                    desiredAccuracy: LocationAccuracy.medium,
-                    forceAndroidLocationManager: false)
-                .then((Position position) {
-              if (mounted) {
-                // setState(() {
-                _currentPosition = position;
-                // });
-                _nearestProductProvider.productNearestParameterHolder.lat =
-                    _currentPosition?.latitude.toString();
-                _nearestProductProvider.productNearestParameterHolder.lng =
-                    _currentPosition?.longitude.toString();
-                _nearestProductProvider.productNearestParameterHolder.mile =
-                    valueHolder.mile;
-                _nearestProductProvider.loadDataList(
-                  requestPathHolder: RequestPathHolder(
-                      loginUserId: loginUserId,
-                      languageCode: valueHolder.languageCode),
-                  requestBodyHolder:
-                      _nearestProductProvider.productNearestParameterHolder,
-                );
-              }
-            }).catchError((Object e) {
-              //
-            });
-          }
-        });
-        function(_nearestProductProvider);
+        //   Geolocator.checkPermission().then((LocationPermission permission) {
+        //     if (permission == LocationPermission.denied) {
+        //       Geolocator.requestPermission()
+        //           .then((LocationPermission permission) {
+        //         if (permission == LocationPermission.denied) {
+        //           //permission denied, do nothing
+        //         } else {
+        //           Geolocator.getCurrentPosition(
+        //                   desiredAccuracy: LocationAccuracy.medium,
+        //                   forceAndroidLocationManager: false)
+        //               .then((Position position) {
+        //             if (mounted) {
+        //               // setState(() {
+        //               _currentPosition = position;
+        //               // });
+        //               _nearestProductProvider.productNearestParameterHolder.lat =
+        //                   _currentPosition?.latitude.toString();
+        //               _nearestProductProvider.productNearestParameterHolder.lng =
+        //                   _currentPosition?.longitude.toString();
+        //               _nearestProductProvider.productNearestParameterHolder.mile =
+        //                   valueHolder.mile;
+        //               _nearestProductProvider.loadDataList(
+        //                 requestPathHolder: RequestPathHolder(
+        //                     loginUserId: loginUserId,
+        //                     languageCode: valueHolder.languageCode),
+        //                 requestBodyHolder:
+        //                     _nearestProductProvider.productNearestParameterHolder,
+        //               );
+        //             }
+        //           }).catchError((Object e) {
+        //             //
+        //           });
+        //         }
+        //       });
+        //     } else {
+        //       Geolocator.getCurrentPosition(
+        //               desiredAccuracy: LocationAccuracy.medium,
+        //               forceAndroidLocationManager: false)
+        //           .then((Position position) {
+        //         if (mounted) {
+        //           // setState(() {
+        //           _currentPosition = position;
+        //           // });
+        //           _nearestProductProvider.productNearestParameterHolder.lat =
+        //               _currentPosition?.latitude.toString();
+        //           _nearestProductProvider.productNearestParameterHolder.lng =
+        //               _currentPosition?.longitude.toString();
+        //           _nearestProductProvider.productNearestParameterHolder.mile =
+        //               valueHolder.mile;
+        //           _nearestProductProvider.loadDataList(
+        //             requestPathHolder: RequestPathHolder(
+        //                 loginUserId: loginUserId,
+        //                 languageCode: valueHolder.languageCode),
+        //             requestBodyHolder:
+        //                 _nearestProductProvider.productNearestParameterHolder,
+        //           );
+        //         }
+        //       }).catchError((Object e) {
+        //         //
+        //       });
+        //     }
+        //   });
+        //   function(_nearestProductProvider);
       });
 }

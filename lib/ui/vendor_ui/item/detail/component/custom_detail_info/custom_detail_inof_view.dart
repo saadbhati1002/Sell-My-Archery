@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:psxmpc/config/ps_colors.dart';
 import 'package:psxmpc/core/vendor/provider/product/product_provider.dart';
 
 import '../../../../../../../core/vendor/constant/ps_dimens.dart';
@@ -72,8 +73,19 @@ class _CustomDetailInfoViewState extends State<CustomDetailInfoView> {
                 .removeWhere((CustomField element) => element.coreKeyId == id);
           return Container(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Divider(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    "Details",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: PsColors.text900,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
                 ListView.builder(
                     shrinkWrap: true,
                     padding: const EdgeInsets.only(

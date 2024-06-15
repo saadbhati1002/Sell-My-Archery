@@ -23,7 +23,7 @@ class SelectCityWidget extends StatelessWidget {
             right: PsDimens.space16,
             top: PsDimens.space16),
         child: PsTextFieldWidgetWithIcon2(
-          hintText: 'select_city'.tr,
+          hintText: "Select State",
           textEditingController: searchCityNameController,
           onTap: () async {
             final dynamic itemLocationResult = await Navigator.pushNamed(

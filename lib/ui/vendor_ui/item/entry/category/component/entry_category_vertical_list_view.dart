@@ -70,9 +70,9 @@ class _EntryCategoryVerticalListViewState
             children: <Widget>[
               CustomEntryCategoryInfoWidget(),
               Container(
-                  height: MediaQuery.of(context).size.height * .65,
+                  height: MediaQuery.of(context).size.height * .71,
                   margin: const EdgeInsets.only(
-                    top: 90,
+                    top: 45,
                     left: PsDimens.space8,
                     right: PsDimens.space8,
                   ),

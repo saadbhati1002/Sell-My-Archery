@@ -78,7 +78,7 @@ class _ItemEntryLocationViewState extends State<ItemEntryFilterCityView>
         _requestPop();
       },
       child: PsWidgetWithAppBar<ItemLocationProvider>(
-          appBarTitle: 'item_entry__location'.tr,
+          appBarTitle: 'State',
           initProvider: () {
             return ItemLocationProvider(
                 repo: repo1, psValueHolder: valueHolder);

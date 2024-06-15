@@ -32,7 +32,7 @@ class SelectCityView extends StatelessWidget {
         '............................Build Item Location UI Again ............................');
 
     return PsWidgetWithAppBar<ItemLocationProvider>(
-        appBarTitle: 'select_city'.tr,
+        appBarTitle: "Select State",
         initProvider: () {
           return ItemLocationProvider(repo: repo1, psValueHolder: valueHolder);
         },
@@ -41,8 +41,8 @@ class SelectCityView extends StatelessWidget {
           provider.loadDataList(
               requestBodyHolder: provider.latestLocationParameterHolder,
               requestPathHolder: RequestPathHolder(
-                  loginUserId:
-                      Utils.checkUserLoginId(provider.psValueHolder!),languageCode: langProvider!.currentLocale.languageCode));
+                  loginUserId: Utils.checkUserLoginId(provider.psValueHolder!),
+                  languageCode: langProvider!.currentLocale.languageCode));
         },
         builder: (BuildContext context, ItemLocationProvider _provider,
             Widget? child) {

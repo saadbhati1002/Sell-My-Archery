@@ -83,7 +83,7 @@ class _ItemEntryLocationTownshipViewState
         _requestPop();
       },
       child: PsWidgetWithAppBar<ItemLocationTownshipProvider>(
-          appBarTitle: 'item_entry__location_township'.tr,
+          appBarTitle: "District",
           initProvider: () {
             return ItemLocationTownshipProvider(
                 repo: repo1, psValueHolder: valueHolder);

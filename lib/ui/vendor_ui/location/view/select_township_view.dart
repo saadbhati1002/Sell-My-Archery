@@ -35,7 +35,7 @@ class ItemLocationTownshipView extends StatelessWidget {
         '............................Build Item Location Township UI Again ............................');
 
     return PsWidgetWithAppBar<ItemLocationTownshipProvider>(
-        appBarTitle: 'select_township',
+        appBarTitle: "Select District",
         initProvider: () {
           return ItemLocationTownshipProvider(
               repo: repo1, psValueHolder: valueHolder);
@@ -46,7 +46,8 @@ class ItemLocationTownshipView extends StatelessWidget {
               requestBodyHolder: provider.latestLocationParameterHolder,
               requestPathHolder: RequestPathHolder(
                   loginUserId: Utils.checkUserLoginId(provider.psValueHolder!),
-                  cityId: cityId,languageCode: langProvider!.currentLocale.languageCode));
+                  cityId: cityId,
+                  languageCode: langProvider!.currentLocale.languageCode));
         },
         builder: (BuildContext context, ItemLocationTownshipProvider provider,
             Widget? child) {

@@ -80,14 +80,14 @@ class ProductVeticalListItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * .16,
+                          height: MediaQuery.of(context).size.height * .17,
                           child: Stack(
                             children: <Widget>[
                               Container(
                                 padding: const EdgeInsets.all(4.0),
                                 width: double.infinity, //PsDimens.space180,
                                 height:
-                                    MediaQuery.of(context).size.height * .16,
+                                    MediaQuery.of(context).size.height * .17,
 
                                 child: ClipRRect(
                                   borderRadius:
@@ -99,7 +99,7 @@ class ProductVeticalListItem extends StatelessWidget {
                                     boxfit: BoxFit.cover,
                                     imageAspectRation: PsConst.Aspect_Ratio_2x,
                                     height: MediaQuery.of(context).size.height *
-                                        .16,
+                                        .17,
                                     onTap: () {
                                       onDetailClick(context);
                                     },

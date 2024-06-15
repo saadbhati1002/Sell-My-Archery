@@ -115,7 +115,7 @@ class _EntryCategoryVerticalListItemState
                                 imageAspectRation: PsConst.Aspect_Ratio_1x,
                                 photoKey: '',
                                 defaultIcon: widget.category.defaultIcon,
-                                boxfit: BoxFit.cover,
+                                boxfit: BoxFit.contain,
                               ),
                             ),
                           ),

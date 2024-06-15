@@ -19,7 +19,7 @@ class LocationTownshipDropDownButton extends StatelessWidget {
     final SearchProductProvider provider =
         Provider.of<SearchProductProvider>(context);
     return PsDropdownBaseWidget(
-        title: 'item_entry__location_township'.tr,
+        title: 'District',
         selectedText: provider.selectedLocationTownshipName,
         onTap: () async {
           FocusScope.of(context).requestFocus(FocusNode());

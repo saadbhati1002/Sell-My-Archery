@@ -107,15 +107,6 @@ class LocationWidget extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  product.itemLocation!.name ?? ' ',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge!
-                                      .copyWith(
-                                        fontSize: 16,
-                                      ),
-                                ),
-                                Text(
                                   product.itemLocationTownship!.townshipName ??
                                       ' ',
                                   style: Theme.of(context)
@@ -124,7 +115,16 @@ class LocationWidget extends StatelessWidget {
                                       .copyWith(
                                         fontSize: 16,
                                       ),
-                                )
+                                ),
+                                Text(
+                                  product.itemLocation!.name ?? ' ',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .copyWith(
+                                        fontSize: 16,
+                                      ),
+                                ),
                               ],
                             )
                         ],
