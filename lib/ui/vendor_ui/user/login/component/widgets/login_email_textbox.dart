@@ -26,7 +26,7 @@ class LoginEmailTextBox extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(
-              'login_username_email_phone'.tr,
+              "Email",
               style: Theme.of(context).textTheme.labelLarge!.copyWith(
                   fontWeight: FontWeight.w500,
                   color: Utils.isLightMode(context)
@@ -44,14 +44,12 @@ class LoginEmailTextBox extends StatelessWidget {
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                 enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(width: 1.0, color: PsColors.text400),
+                  borderSide: BorderSide(width: 1.0, color: PsColors.text400),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(width: 1.0, color: PsColors.text400),
+                  borderSide: BorderSide(width: 1.0, color: PsColors.text400),
                 ),
-                hintText: 'login_username_email_phone_hint'.tr,
+                hintText: "Enter Email",
                 hintStyle: Theme.of(context)
                     .textTheme
                     .labelLarge!

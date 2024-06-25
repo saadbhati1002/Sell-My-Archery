@@ -70,7 +70,8 @@ class _ContactUsViewState extends State<ContactUsView> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   color: Utils.isLightMode(context)
-                                      ? PsColors.text800 : PsColors.text50)),
+                                      ? PsColors.text800
+                                      : PsColors.text50)),
                     ),
                     if (provider.hasPhone)
                       PsTextWidgetWithDynamicIcon(
@@ -108,7 +109,8 @@ class _ContactUsViewState extends State<ContactUsView> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   color: Utils.isLightMode(context)
-                                      ? PsColors.text800 : PsColors.text50)),
+                                      ? PsColors.text800
+                                      : PsColors.text50)),
                     ),
                     PsTextFieldWidget(
                         titleText: 'contact_us__contact_name'.tr,
@@ -116,9 +118,9 @@ class _ContactUsViewState extends State<ContactUsView> {
                         hintText: 'contact_us__contact_name_hint'.tr,
                         textEditingController: nameController),
                     PsTextFieldWidget(
-                        titleText: 'contact_us__contact_email'.tr,
+                        titleText: "Enter email",
                         textAboutMe: false,
-                        hintText: 'contact_us__contact_email_hint'.tr,
+                        hintText: "Enter email",
                         textEditingController: emailController),
                     PsTextFieldWidget(
                         titleText: 'contact_us__contact_message'.tr,
