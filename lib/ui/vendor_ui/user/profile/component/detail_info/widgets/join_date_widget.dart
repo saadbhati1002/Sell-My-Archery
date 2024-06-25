@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:psxmpc/core/vendor/provider/language/app_localization_provider.dart';
-
 import '../../../../../../../config/ps_colors.dart';
 import '../../../../../../../core/vendor/constant/ps_dimens.dart';
 import '../../../../../../../core/vendor/provider/user/user_provider.dart';
@@ -18,9 +16,15 @@ class JoinDateWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('profile__join_on'.tr,
-                textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(height: 1.7, color: Utils.isLightMode(context) ? PsColors.text500: PsColors.text200),),
+            Text(
+              'Member Since:',
+              textAlign: TextAlign.start,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  height: 1.7,
+                  color: Utils.isLightMode(context)
+                      ? PsColors.text500
+                      : PsColors.text200),
+            ),
             const SizedBox(
               width: PsDimens.space6,
             ),
@@ -32,9 +36,14 @@ class JoinDateWidget extends StatelessWidget {
                   : Utils.changeTimeStampToStandardDateTimeFormat(
                       userProvider.user.data!.addedDateTimeStamp),
               textAlign: TextAlign.start,
-              style:
-                  Theme.of(context).textTheme.bodySmall?.copyWith(height: 1.7)
-                                  .copyWith(color: Utils.isLightMode(context) ? PsColors.text500: PsColors.text200),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(height: 1.7)
+                  .copyWith(
+                      color: Utils.isLightMode(context)
+                          ? PsColors.text500
+                          : PsColors.text200),
             ),
           ],
         ));

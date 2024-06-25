@@ -199,7 +199,7 @@ mixin Utils {
 
   static String getDateFormat(String? dateTime, String dateFormat) {
     final DateTime date = DateTime.parse(dateTime!);
-    return DateFormat(dateFormat).format(date);
+    return DateFormat("MMMM  yyyy").format(date);
   }
 
   static String changeTimeStampToStandardDateTimeFormat(String? timeStamp) {
@@ -246,8 +246,8 @@ mixin Utils {
           int.tryParse(arr[1]) != null &&
           int.tryParse(arr[2]) != null &&
           double.tryParse(arr[3]) != null) {
-        return Color.fromRGBO(int.parse(arr[0]), int.parse(arr[1]), int.parse(arr[2]),
-            double.parse(arr[3]));
+        return Color.fromRGBO(int.parse(arr[0]), int.parse(arr[1]),
+            int.parse(arr[2]), double.parse(arr[3]));
       } else {
         return defaultColor;
       }
@@ -256,7 +256,7 @@ mixin Utils {
     }
   }
 
-  //check color format and return Color 
+  //check color format and return Color
   static Color codeToColor(String? code, Color defaultColor) {
     if (code != null && code != '') {
       if (checkHexColorCodeFormat(code) == true) {
@@ -1173,7 +1173,7 @@ mixin Utils {
           PsProviderConst.init_vendor_user_provider
         ],
         PsWidgetConst.profile_vendor_application_card: <String>[
-          PsProviderConst.init_vendor_user_provider 
+          PsProviderConst.init_vendor_user_provider
         ],
         PsWidgetConst.profile_my_vendor: <String>[
           PsProviderConst.init_vendor_user_provider,
@@ -1181,7 +1181,7 @@ mixin Utils {
         // PsWidgetConst.vendor_subscription_plan:<String>[
         //     PsProviderConst.init_vendor_subscription_plan,
         // ],
-        
+
         PsWidgetConst.top_seller_horizontal_list: <String>[
           PsProviderConst.init_top_seller_provider,
           PsProviderConst.init_user_provider
@@ -1215,11 +1215,9 @@ mixin Utils {
         PsWidgetConst.profile_detail: <String>[
           PsProviderConst.init_user_provider
         ],
-
         PsWidgetConst.product_vendor_info_tile: <String>[
           PsProviderConst.init_item_detail_provider
         ],
-
         PsWidgetConst.product_expandable_appbar: <String>[
           PsProviderConst.init_item_detail_provider,
           PsProviderConst.init_user_provider,
@@ -1290,7 +1288,7 @@ mixin Utils {
         PsWidgetConst.product_seller_info_tile: <String>[
           PsProviderConst.init_item_detail_provider
         ],
-         PsWidgetConst.product_give_rating: <String>[
+        PsWidgetConst.product_give_rating: <String>[
           PsProviderConst.init_item_detail_provider
         ],
         PsWidgetConst.related_product_list: <String>[

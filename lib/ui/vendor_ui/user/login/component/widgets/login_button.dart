@@ -30,7 +30,7 @@ class LoginButton extends StatelessWidget {
         colorData: Theme.of(context).primaryColor,
         hasShadow: false,
         width: double.infinity,
-        titleText: 'login__sign_in'.tr,
+        titleText: 'Sign In',
         onPressed: () async {
           if (emailController.text.isEmpty) {
             callWarningDialog(context, 'warning_dialog__input_email'.tr);
@@ -38,16 +38,17 @@ class LoginButton extends StatelessWidget {
             callWarningDialog(context, 'warning_dialog__input_password'.tr);
           } else {
             // if (Utils.checkEmailFormat(emailController.text.trim())!) {
-              if (provider.isRememberMeChecked) {
-                await provider.replaceUserInfo(emailController.text.trim(), passwordController.text); 
-              }
-              await provider.loginWithEmailId(
-                  context,
-                  emailController.text.trim() ,
-                  passwordController.text,
-                  onProfileSelected,
-                  callBackAfterLoginSuccess,
-                  langProvider!.currentLocale.languageCode);
+            if (provider.isRememberMeChecked) {
+              await provider.replaceUserInfo(
+                  emailController.text.trim(), passwordController.text);
+            }
+            await provider.loginWithEmailId(
+                context,
+                emailController.text.trim(),
+                passwordController.text,
+                onProfileSelected,
+                callBackAfterLoginSuccess,
+                langProvider!.currentLocale.languageCode);
             // } else {
             //   callWarningDialog(context, 'warning_dialog__email_format'.tr);
             // }

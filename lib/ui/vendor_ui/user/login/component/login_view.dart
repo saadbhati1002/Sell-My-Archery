@@ -9,16 +9,14 @@ import '../../../../../core/vendor/constant/ps_dimens.dart';
 import '../../../../../core/vendor/provider/language/app_localization_provider.dart';
 import '../../../../../core/vendor/provider/user/user_provider.dart';
 import '../../../../../core/vendor/repository/user_repository.dart';
-import '../../../../../core/vendor/utils/utils.dart';
 import '../../../../../core/vendor/viewobject/common/ps_value_holder.dart';
 import '../../../../../core/vendor/viewobject/user.dart';
 import '../../../../custom_ui/user/login/component/widgets/divider_or_widget.dart';
 import '../../../../custom_ui/user/login/component/widgets/forgot_password_text_widget.dart';
-import '../../../../custom_ui/user/login/component/widgets/go_to_register_text_widget.dart';
 import '../../../../custom_ui/user/login/component/widgets/login_button.dart';
+import '../../../../custom_ui/user/login/component/widgets/signup_button.dart';
 import '../../../../custom_ui/user/login/component/widgets/login_email_textbox.dart';
 import '../../../../custom_ui/user/login/component/widgets/login_pwd_text_box.dart';
-import '../../../../custom_ui/user/login/component/widgets/login_with_apple_widget.dart';
 import '../../../../custom_ui/user/login/component/widgets/login_with_fb_widget.dart';
 import '../../../../custom_ui/user/login/component/widgets/login_with_google_widget.dart';
 import '../../../../custom_ui/user/login/component/widgets/login_with_phone_widget.dart';
@@ -112,6 +110,9 @@ class _LoginViewState extends State<LoginView> {
                 onProfileSelected: widget.onProfileSelected,
                 callBackAfterLoginSuccess: callBackAfterLoginSuccess,
               ),
+              CustomSignUpButton(
+                callBackAfterLoginSuccess: widget.onSignInSelected,
+              ),
               if (Platform.isIOS ||
                   psValueHolder!.showPhoneLogin! ||
                   psValueHolder!.showGoogleLogin! ||
@@ -136,12 +137,12 @@ class _LoginViewState extends State<LoginView> {
               //     onAppleIdSignInSelected: widget.onGoogleSignInSelected,
               //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
               //   ),
-              const SizedBox(
-                height: PsDimens.space44,
-              ),
-              CustomGoToRegisterTextWidget(
-                onSignInSelected: widget.onSignInSelected,
-              ),
+              // const SizedBox(
+              //   height: PsDimens.space44,
+              // ),
+              // CustomGoToRegisterTextWidget(
+              //   onSignInSelected: widget.onSignInSelected,
+              // ),
               _spacingWidget,
               _spacingWidget,
             ],

@@ -58,7 +58,6 @@ class DashboardBodyWidget extends StatefulWidget {
 
 class DashboardBodyWidgetState<T extends DashboardBodyWidget>
     extends State<DashboardBodyWidget> with TickerProviderStateMixin {
-
   String? _userId = '';
   String phoneUserName = '';
   String phoneNumber = '';
@@ -144,7 +143,8 @@ class DashboardBodyWidgetState<T extends DashboardBodyWidget>
               userId: _userId,
               loadUserData: (String userId) {
                 //to control item add button, need to load user after login
-                provider.getUser(userId, langProvider.currentLocale.languageCode);
+                provider.getUser(
+                    userId, langProvider.currentLocale.languageCode);
               },
               isJustLogined: _isJustLogined,
               changeIsJustLoginToFalse: () {
@@ -221,25 +221,13 @@ class DashboardBodyWidgetState<T extends DashboardBodyWidget>
                 updateSelectedIndexWithAnimation:
                     widget.updateSelectedIndexWithAnimation);
           } else if (Utils.showItemUploadView(widget.currentIndex)) {
-              return CutomEntryCategoryVerticalListView(
+            return CutomEntryCategoryVerticalListView(
                 animationController: animationController,
                 onItemUploaded: () {
                   widget.updateSelectedIndexWithAnimation(
                       ''.tr, PsConst.REQUEST_CODE__MENU_HOME_FRAGMENT);
-                  },
+                },
                 isFromChat: false);
-            // return CustomItemEntryView(
-            //     animationController: animationController,
-            //     flag: PsConst.ADD_NEW_ITEM,
-            //     item: Product(),
-            //     maxImageCount: psValueHolder.maxImageCount,
-            //     onItemUploaded: (String itemId) {
-            //       _itemId = itemId;
-            //       if (_itemId != null) {
-            //         widget.updateSelectedIndexWithAnimation(
-            //             ''.tr, PsConst.REQUEST_CODE__MENU_HOME_FRAGMENT);
-            //       }
-            //     });
           } else if (Utils.showFavoriteProduct(widget.currentIndex)) {
             return CustomFavouriteProductListView(
                 animationController: animationController,
