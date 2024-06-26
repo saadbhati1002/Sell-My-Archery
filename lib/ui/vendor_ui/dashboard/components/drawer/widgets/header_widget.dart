@@ -39,13 +39,13 @@ class DrawerHeaderWidget extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              const Text('Follow Us'),
-              const SizedBox(
-                height: 5,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  const Text('Follow Us'),
+                  const SizedBox(
+                    width: 10,
+                  ),
                   GestureDetector(
                     onTap: () {
                       launchUrl(Uri.parse(
@@ -69,6 +69,20 @@ class DrawerHeaderWidget extends StatelessWidget {
                         height: 25,
                         width: 25,
                         child: Image.asset('assets/images/instagram.png')),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      launchUrl(Uri.parse(
+                          'https://whatsapp.com/channel/0029VadKaxoChq6Mazds9g32'));
+                    },
+                    child: SizedBox(
+                      height: 25,
+                      width: 25,
+                      child: Image.asset('assets/images/whatsup.png'),
+                    ),
                   ),
                 ],
               ),

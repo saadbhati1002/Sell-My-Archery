@@ -29,8 +29,7 @@ class SMSWidget extends StatelessWidget {
               ? PsColors.achromatic100
               : Theme.of(context).primaryColor,
           hasShadow: false,
-          icon: Icons.sms,
-          titleText: "WhatsApp",
+          titleText: 'WhatsApp',
           textColor: Utils.isLightMode(context)
               ? PsColors.achromatic50
               : PsColors.text800,
