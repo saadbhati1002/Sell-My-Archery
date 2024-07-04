@@ -41,7 +41,7 @@ class HomeBlogProductSliderListWidgetState
                 children: <Widget>[
                   CarouselSlider(
                     options: CarouselOptions(
-                      height: 170,
+                      height: 190,
                       enlargeCenterPage: true,
                       autoPlay: valueHolder.isSliderAutoPlay!,
                       viewportFraction: 1,

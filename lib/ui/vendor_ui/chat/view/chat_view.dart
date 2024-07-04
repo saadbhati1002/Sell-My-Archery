@@ -186,7 +186,8 @@ class _ChatViewState extends State<ChatView>
   void initState() {
     super.initState();
     Firebase.initializeApp();
-    final FirebaseDatabase database = FirebaseDatabase.instance;// (app: Utils.firebaseApp!);
+    final FirebaseDatabase database =
+        FirebaseDatabase.instance; // (app: Utils.firebaseApp!);
     _messagesRef = database.ref().child('Message');
     _chatRef = database.ref().child('Current_Chat_With');
     _userPresence = database.ref().child('User_Presence');
@@ -302,8 +303,9 @@ class _ChatViewState extends State<ChatView>
           });
         }
       } else {
-        itemId = Chat().fromMap(event.snapshot.value)!.itemId;// ['itemId'];
-        final String? _receiverId = Chat().fromMap(event.snapshot.value)!.receiverId;
+        itemId = Chat().fromMap(event.snapshot.value)!.itemId; // ['itemId'];
+        final String? _receiverId =
+            Chat().fromMap(event.snapshot.value)!.receiverId;
 
         if (_receiverId == psValueHolder.loginUserId &&
             itemId == widget.itemId) {
@@ -525,9 +527,9 @@ class _ChatViewState extends State<ChatView>
                   Consumer2<GetChatHistoryProvider, UserProvider>(builder:
                       (BuildContext context, GetChatHistoryProvider provider,
                           UserProvider userProvider, Widget? child) {
-                      if ( psValueHolder.selectChatType == PsConst.CHAT_ONLY)
-                     return Container();
-                    if (widget.chatFlag == PsConst.CHAT_FROM_SELLER )
+                    if (psValueHolder.selectChatType == PsConst.CHAT_ONLY)
+                      return Container();
+                    if (widget.chatFlag == PsConst.CHAT_FROM_SELLER)
                       return Padding(
                         padding: const EdgeInsets.only(
                             top: PsDimens.space8,
@@ -545,7 +547,7 @@ class _ChatViewState extends State<ChatView>
                                 itemDetailProvider!.product,
                             getChatHistoryProvider: provider),
                       );
-                  
+
                     return const SizedBox();
                   }),
                   Consumer<UserProvider>(builder: (BuildContext context,
@@ -582,7 +584,7 @@ class _ChatViewState extends State<ChatView>
                     return Container(
                       color: Utils.isLightMode(context)
                           ? PsColors.achromatic100
-                          :PsColors.achromatic800,
+                          : PsColors.achromatic800,
                       child: Column(
                         children: <Widget>[
                           CustomHeaderItemInfoWidget(
@@ -610,8 +612,8 @@ class _ChatViewState extends State<ChatView>
                           if (userProvider.user.data != null &&
                               userProvider.user.data!.isBlocked == PsConst.ONE)
                             const SizedBox()
-                          else
-                            if(psValueHolder.selectChatType != PsConst.NO_CHAT)
+                          else if (psValueHolder.selectChatType !=
+                              PsConst.NO_CHAT)
                             CustomChatBoxWidget(
                               insertDataToFireBase: _insertDataToFireBase,
                               sessionId: sessionId,
@@ -643,29 +645,34 @@ class _ChatViewState extends State<ChatView>
     String sessionId,
     int type,
   ) async {
-    final Message messages = Message();
-    messages.addedDate = Utils.getTimeStamp();
-    messages.id = id;
-    messages.isSold = isSold;
-    messages.isUserBought = isUserBought;
-    messages.isBlocked = isBlocked;
-    messages.itemId = itemId;
-    messages.message = message;
-    messages.offerStatus = offerStatus;
-    messages.sendByUserId = sendByUserId;
-    messages.sessionId = sessionId;
-    messages.type = type;
+    try {
+      print("saad bhati");
+      final Message messages = Message();
+      messages.addedDate = Utils.getTimeStamp();
+      messages.id = id;
+      messages.isSold = isSold;
+      messages.isUserBought = isUserBought;
+      messages.isBlocked = isBlocked;
+      messages.itemId = itemId;
+      messages.message = message;
+      messages.offerStatus = offerStatus;
+      messages.sendByUserId = sendByUserId;
+      messages.sessionId = sessionId;
+      messages.type = type;
 
-    final String newkey = _messagesRef.child(sessionId).push().key!;
-    messages.id = newkey;
-    // Add / Update
-    _messagesRef
-        .child(sessionId)
-        .child(newkey)
-        .set(messages.toInsertMap(messages));
-    // if (isActive != ChatUserStatus.active) {
-    //   await pushNoti();
-    // }
+      final String newkey = _messagesRef.child(sessionId).push().key!;
+      messages.id = newkey;
+      // Add / Update
+      _messagesRef
+          .child(sessionId)
+          .child(newkey)
+          .set(messages.toInsertMap(messages));
+      // if (isActive != ChatUserStatus.active) {
+      //   await pushNoti();
+      // }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   Future<void> _deleteDataToFireBase(

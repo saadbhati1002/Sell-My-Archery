@@ -72,15 +72,15 @@ class _SettingViewState extends State<SettingView> {
             // CustomSettingDarkAndWhiteModeWidget(
             //     animationController: widget.animationController),
             SettingNotiSwitchWidget(),
-            CustomSettingCameraWidget(),
-            CustomIntroSliderWidget(),
+            // CustomSettingCameraWidget(),
+            // CustomIntroSliderWidget(),
             const SizedBox(height: PsDimens.space2),
             CustomSettingTitleWidget(title: 'setting_about'.tr),
             CustomSettingTermsAndConditionsWidget(),
             CustomSettingPrivacyWidget(),
             CustomSettingFAQWidget(),
             // CustomSettingNotificationWidget(),
-            CustomSettingAppInfoWidget(),
+            // CustomSettingAppInfoWidget(),
             CustomSettingAppVersionWidget(),
             const SizedBox(
               height: 20,

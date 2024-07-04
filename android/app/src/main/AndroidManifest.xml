@@ -92,7 +92,7 @@
     <!-- TOD: Replace with your real AdMob app ID -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value= "@string/android__admob_ads_id_key" />
+            android:value= "ca-app-pub-6230346845655831~7898115121" />
         <activity android:name="com.facebook.FacebookActivity" 
         android:exported="true"
     android:configChanges=

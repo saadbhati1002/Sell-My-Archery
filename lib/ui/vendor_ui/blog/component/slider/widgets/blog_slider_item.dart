@@ -17,7 +17,7 @@ class BlogSliderItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: PsDimens.space150,
+          height: 190,
           child: PsNetworkImage(
               photoKey: '',
               boxfit: BoxFit.cover,

@@ -68,13 +68,13 @@ class ProductHorizontalListItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * .16,
+                        height: MediaQuery.of(context).size.height * .19,
                         child: Stack(
                           children: <Widget>[
                             Container(
                               width: double.infinity, //PsDimens.space180,
                               //height: double.infinity,
-                              height: MediaQuery.of(context).size.height * .16,
+                              height: MediaQuery.of(context).size.height * .19,
                               child: ClipRRect(
                                 borderRadius:
                                     BorderRadius.circular(PsDimens.space6),
@@ -83,7 +83,7 @@ class ProductHorizontalListItem extends StatelessWidget {
                                       '$tagKey${product.id}${PsConst.HERO_TAG__IMAGE}',
                                   defaultPhoto: product.defaultPhoto,
                                   height:
-                                      MediaQuery.of(context).size.height * .16,
+                                      MediaQuery.of(context).size.height * .18,
                                   boxfit: BoxFit.cover,
                                   imageAspectRation: PsConst.Aspect_Ratio_3x,
                                   onTap: () {
@@ -234,8 +234,8 @@ class ProductHorizontalListItem extends StatelessWidget {
                                 maxLines: 1,
                                 style: const TextStyle(
                                   // color: PsColors.secondary800,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
@@ -255,69 +255,13 @@ class ProductHorizontalListItem extends StatelessWidget {
                               product: product,
                               tagKey: tagKey,
                             ),
-                            // Row(
-                            //   children: <Widget>[
-                            //     Column(
-                            //       crossAxisAlignment: CrossAxisAlignment.start,
-                            //       children: <Widget>[
-                            //         PsHero(
-                            //           tag:
-                            //               '$tagKey${product.id}$PsConst.HERO_TAG__UNIT_PRICE',
-                            //           flightShuttleBuilder:
-                            //               Utils.flightShuttleBuilder,
-                            //           child: Material(
-                            //               type: MaterialType.transparency,
-                            //               child: Text(
-                            //                 !showDiscount
-                            //                     ? product.originalPrice !=
-                            //                                 '0' &&
-                            //                             product.originalPrice !=
-                            //                                 ''
-                            //                         ? '${product.itemCurrency!.currencySymbol}${' '}${Utils.getPriceFormat(product.originalPrice!, valueHolder.priceFormat!)}'
-                            //                         : 'item_price_free'.tr
-                            //                     : '${product.itemCurrency!.currencySymbol}${' '}${Utils.getPriceFormat(product.currentPrice!, valueHolder.priceFormat!)}',
-                            //                 textAlign: TextAlign.start,
-                            //                 style: Theme.of(context)
-                            //                     .textTheme
-                            //                     .bodyMedium!
-                            //                     .copyWith(
-                            //                         fontSize: 15, color: Theme.of(context).primaryColor),
-                            //               )),
-                            //         ),
-                            //         Visibility(
-                            //             maintainSize: true,
-                            //             maintainAnimation: true,
-                            //             maintainState: true,
-                            //             visible: showDiscount,
-                            //             child: Row(
-                            //               children: <Widget>[
-                            //                 Padding(
-                            //                   padding: const EdgeInsets.only(
-                            //                       bottom: PsDimens.space4),
-                            //                   child: Text(
-                            //                     '${product.itemCurrency!.currencySymbol} ${Utils.getPriceFormat(product.originalPrice!, valueHolder.priceFormat!)}',
-                            //                     textAlign: TextAlign.start,
-                            //                     style: Theme.of(context)
-                            //                         .textTheme
-                            //                         .bodyMedium!
-                            //                         .copyWith(
-                            //                             color: Utils.isLightMode(context) ? PsColors.text600 : PsColors.text300,
-                            //                             decoration:
-                            //                                 TextDecoration
-                            //                                     .lineThrough,
-                            //                             fontSize: 12),
-                            //                   ),
-                            //                 ),
-                            //               ],
-                            //             ))
-                            //       ],
-                            //     ),
-                            //   ],
-                            // ),
+
                             Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Icon(
                                         Icons.location_on_outlined,
@@ -327,37 +271,38 @@ class ProductHorizontalListItem extends StatelessWidget {
                                             : PsColors.text400,
                                       ),
                                       Expanded(
-                                          child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: PsDimens.space4,
-                                                  right: PsDimens.space4),
-                                              child: Text(
-                                                  valueHolder.isSubLocation ==
-                                                          PsConst.ONE
-                                                      ? (product.itemLocationTownship!
-                                                                      .townshipName !=
-                                                                  '' &&
-                                                              product.itemLocationTownship!
-                                                                      .townshipName !=
-                                                                  null)
-                                                          ? // check optional township is empty
-                                                          '${product.itemLocationTownship!.townshipName}'
-                                                          : '${product.itemLocation!.name}'
-                                                      : '${product.itemLocation!.name}',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.start,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodySmall!
-                                                      .copyWith(
-                                                          fontSize: 12,
-                                                          color: Utils
-                                                                  .isLightMode(
-                                                                      context)
-                                                              ? PsColors.text500
-                                                              : PsColors
-                                                                  .text400)))),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: PsDimens.space4,
+                                              right: PsDimens.space4),
+                                          child: Text(
+                                            valueHolder.isSubLocation ==
+                                                    PsConst.ONE
+                                                ? (product.itemLocationTownship!
+                                                                .townshipName !=
+                                                            '' &&
+                                                        product.itemLocationTownship!
+                                                                .townshipName !=
+                                                            null)
+                                                    ? // check optional township is empty
+                                                    '${product.itemLocationTownship!.townshipName},\n${product.itemLocation!.name}'
+                                                    : '${product.itemLocation!.name}'
+                                                : '${product.itemLocation!.name}',
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            textAlign: TextAlign.start,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(
+                                                    fontSize: 10,
+                                                    color: Utils.isLightMode(
+                                                            context)
+                                                        ? PsColors.text500
+                                                        : PsColors.text400),
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),

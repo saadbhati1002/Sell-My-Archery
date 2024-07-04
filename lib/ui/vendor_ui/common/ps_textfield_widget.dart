@@ -17,7 +17,7 @@ class PsTextFieldWidget extends StatelessWidget {
       this.isStar = false,
       this.isEnable = true,
       this.wrongFormat = false,
-        this.readonly=false});
+      this.readonly = false});
 
   final TextEditingController? textEditingController;
   final String titleText;
@@ -50,9 +50,7 @@ class PsTextFieldWidget extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(titleText,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!),
+                          style: Theme.of(context).textTheme.titleMedium!),
                       Text('*',
                           style: Theme.of(context)
                               .textTheme
@@ -75,10 +73,11 @@ class PsTextFieldWidget extends StatelessWidget {
                 bottom: PsDimens.space12),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              border: Border.all(color: wrongFormat ? PsColors.error500 : PsColors.text400),
+              border: Border.all(
+                  color: wrongFormat ? PsColors.error500 : PsColors.text400),
             ),
             child: TextField(
-              readOnly:readonly ,
+                readOnly: readonly,
                 keyboardType: keyboardType,
                 maxLines: null,
                 textDirection: TextDirection.ltr,
@@ -103,8 +102,7 @@ class PsTextFieldWidget extends StatelessWidget {
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyLarge!
-                            .copyWith(
-                                color: PsColors.text400),
+                            .copyWith(color: PsColors.text400),
                       )
                     : InputDecoration(
                         contentPadding: const EdgeInsets.only(
@@ -116,8 +114,7 @@ class PsTextFieldWidget extends StatelessWidget {
                         hintStyle: Theme.of(context)
                             .textTheme
                             .bodyLarge!
-                            .copyWith(
-                                color: PsColors.text400),
+                            .copyWith(color: PsColors.warning200),
                       ))),
       ],
     );
@@ -307,7 +304,9 @@ class _PsTextFieldPasswordWidgetState extends State<PsTextFieldPasswordWidget> {
                           .textTheme
                           .bodyMedium!
                           .copyWith(
-                              color: Utils.isLightMode(context) ? PsColors.text300 : PsColors.text500),
+                              color: Utils.isLightMode(context)
+                                  ? PsColors.text300
+                                  : PsColors.text500),
                       border: InputBorder.none,
                       suffixIcon: IconButton(
                         icon: _isHidden
@@ -327,7 +326,9 @@ class _PsTextFieldPasswordWidgetState extends State<PsTextFieldPasswordWidget> {
                           .textTheme
                           .bodyMedium!
                           .copyWith(
-                              color: Utils.isLightMode(context) ? PsColors.text300 : PsColors.text500),
+                              color: Utils.isLightMode(context)
+                                  ? PsColors.text300
+                                  : PsColors.text500),
                       border: InputBorder.none,
                       suffixIcon: IconButton(
                         icon: _isHidden

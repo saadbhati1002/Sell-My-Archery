@@ -118,28 +118,28 @@ class _LoginViewState extends State<LoginView> {
                   psValueHolder!.showGoogleLogin! ||
                   psValueHolder!.showFacebookLogin!)
                 CustomDividerORWidget(),
-              // if (psValueHolder!.showPhoneLogin!)
-              // CustomLoginWithPhoneWidget(
-              //   onPhoneSignInSelected: widget.onPhoneSignInSelected,
-              // ),
-              // if (psValueHolder!.showGoogleLogin!)
-              //   CustomLoginWithGoogleWidget(
-              //     onGoogleSignInSelected: widget.onGoogleSignInSelected,
-              //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
-              //   ),
-              // if (psValueHolder!.showFacebookLogin!)
-              //   CustomLoginWithFbWidget(
-              //     onFbSignInSelected: widget.onFbSignInSelected,
-              //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
-              //   ),
+              if (psValueHolder!.showPhoneLogin!)
+                CustomLoginWithPhoneWidget(
+                  onPhoneSignInSelected: widget.onPhoneSignInSelected,
+                ),
+              if (psValueHolder!.showGoogleLogin!)
+                CustomLoginWithGoogleWidget(
+                  onGoogleSignInSelected: widget.onGoogleSignInSelected,
+                  callBackAfterLoginSuccess: callBackAfterLoginSuccess,
+                ),
+              if (psValueHolder!.showFacebookLogin!)
+                CustomLoginWithFbWidget(
+                  onFbSignInSelected: widget.onFbSignInSelected,
+                  callBackAfterLoginSuccess: callBackAfterLoginSuccess,
+                ),
               // if (Utils.isAppleSignInAvailable == 1 && Platform.isIOS)
               //   CustomLoginWithAppleIdWidget(
               //     onAppleIdSignInSelected: widget.onGoogleSignInSelected,
               //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
               //   ),
-              // const SizedBox(
-              //   height: PsDimens.space44,
-              // ),
+              const SizedBox(
+                height: PsDimens.space44,
+              ),
               // CustomGoToRegisterTextWidget(
               //   onSignInSelected: widget.onSignInSelected,
               // ),

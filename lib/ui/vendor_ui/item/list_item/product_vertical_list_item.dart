@@ -250,7 +250,7 @@ class ProductVeticalListItem extends StatelessWidget {
                                   maxLines: 1,
                                   style: const TextStyle(
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ),
@@ -339,35 +339,37 @@ class ProductVeticalListItem extends StatelessWidget {
                                         : PsColors.text400,
                                   ),
                                   Expanded(
-                                      child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: PsDimens.space4,
-                                              right: PsDimens.space4),
-                                          child: Text(
-                                              valueHolder.isSubLocation ==
-                                                      PsConst.ONE
-                                                  ? (product.itemLocationTownship!
-                                                                  .townshipName !=
-                                                              '' &&
-                                                          product.itemLocationTownship!
-                                                                  .townshipName !=
-                                                              null)
-                                                      ? // check optional township is empty
-                                                      '${product.itemLocationTownship!.townshipName}'
-                                                      : '${product.itemLocation!.name}'
-                                                  : '${product.itemLocation!.name}',
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.start,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall!
-                                                  .copyWith(
-                                                    fontSize: 12,
-                                                    color: Utils.isLightMode(
-                                                            context)
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: PsDimens.space4,
+                                          right: PsDimens.space4),
+                                      child: Text(
+                                        valueHolder.isSubLocation == PsConst.ONE
+                                            ? (product.itemLocationTownship!
+                                                            .townshipName !=
+                                                        '' &&
+                                                    product.itemLocationTownship!
+                                                            .townshipName !=
+                                                        null)
+                                                ? // check optional township is empty
+                                                '${product.itemLocationTownship!.townshipName},\n${product.itemLocation!.name}'
+                                                : '${product.itemLocation!.name}'
+                                            : '${product.itemLocation!.name}',
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        textAlign: TextAlign.start,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall!
+                                            .copyWith(
+                                                fontSize: 10,
+                                                color:
+                                                    Utils.isLightMode(context)
                                                         ? PsColors.text500
-                                                        : PsColors.text400,
-                                                  )))),
+                                                        : PsColors.text400),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                               if (valueHolder.isShowOwnerInfo! &&

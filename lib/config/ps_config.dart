@@ -55,19 +55,20 @@ class PsConfig {
   ///
   static const String iosGoogleAppId =
       '1:000000000000:ios:0000000000000000000000';
-  static const String iosGcmSenderId = '000000000000';
-  static const String iosProjectId = 'flutter-buy-and-sell';
+  static const String iosGcmSenderId = '828252791763';
+  static const String iosProjectId =
+      '1:828252791763:ios:c830ec31b8857efe194526';
   static const String iosDatabaseUrl =
-      'https://flutter-buy-and-sell.firebaseio.com';
-  static const String iosApiKey = 'AI0000000000000000000000000000000000000';
+      'https://sell-my-archery-d93be-default-rtdb.firebaseio.com/';
+  static const String iosApiKey = 'AIzaSyCZPl7AL-VjCv6eEtp21QsRpaA0fXHv_Wc';
 
   static const String androidGoogleAppId =
-      '1:193514998470:android:36a0ca91e49b2923ed25c7';
+      '1:828252791763:android:469a3a04d8a18728194526';
   static const String androidGcmSenderId = '000000000000';
-  static const String androidProjectId = 'sellmyarchery';
-  static const String androidApiKey = 'AI00000000000000000000-0000000000000000';
+  static const String androidProjectId = 'sell-my-archery-d93be';
+  static const String androidApiKey = 'AIzaSyBGgjomQ1Pu8wuRRrq7yip4GRMaEqtrRcI';
   static const String androidDatabaseUrl =
-      'https://flutter-buy-and-sell.firebaseio.com';
+      'https://sell-my-archery-d93be-default-rtdb.firebaseio.com/';
 
   ///
   ///Admob Setting

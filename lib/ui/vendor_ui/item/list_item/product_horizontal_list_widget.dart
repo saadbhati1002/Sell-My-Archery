@@ -64,7 +64,7 @@ class ProductHorizontalListWidget extends StatelessWidget {
             crossAxisSpacing: 0.0,
             mainAxisSpacing: 2.0,
             //mainAxisExtent: 5.0,
-            childAspectRatio: 0.814),
+            childAspectRatio: 0.75),
         itemBuilder: (context, index) {
           if (!isLoading &&
               productList![index].adType == PsConst.GOOGLE_AD_TYPE) {

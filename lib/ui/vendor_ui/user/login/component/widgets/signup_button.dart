@@ -19,12 +19,12 @@ class SignUpButton extends StatelessWidget {
           left: PsDimens.space16,
           right: PsDimens.space16),
       child: PSButtonWidget(
-        colorData: Colors.orange,
+        colorData: Colors.red,
         hasShadow: false,
         width: double.infinity,
         titleText: 'Sign Up',
         onPressed: () async {
-          await Navigator.pushReplacementNamed(
+          Navigator.pushNamed(
             context,
             RoutePaths.user_register_container,
           );

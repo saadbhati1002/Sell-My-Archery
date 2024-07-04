@@ -125,7 +125,7 @@ class ProductDetailGalleryViewState<T extends ProductDetailGalleryView>
                           imagePath:
                               provider.tempGalleryList.data![index].imgPath,
                           onTap: onImageTap,
-                          boxfit: BoxFit.cover,
+                          boxfit: BoxFit.contain,
                         ),
                         if (valueHolder.showItemVideo! &&
                             isHaveVideo &&

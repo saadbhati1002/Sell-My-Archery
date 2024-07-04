@@ -38,22 +38,22 @@ Future<void> main() async {
 
   try {
     await Firebase.initializeApp(
-        //name: 'psx-multipurpose-classified-app',
-        // options: Platform.isIOS
-        //     ? const FirebaseOptions(
-        //         appId: PsConfig.iosGoogleAppId,
-        //         messagingSenderId: PsConfig.iosGcmSenderId,
-        //         databaseURL: PsConfig.iosDatabaseUrl,
-        //         projectId: PsConfig.iosProjectId,
-        //         apiKey: PsConfig.iosApiKey)
-        //     : const FirebaseOptions(
-        //         appId: PsConfig.androidGoogleAppId,
-        //         apiKey: PsConfig.androidApiKey,
-        //         projectId: PsConfig.androidProjectId,
-        //         messagingSenderId: PsConfig.androidGcmSenderId,
-        //         databaseURL: PsConfig.androidDatabaseUrl,
-        //       ),
-        );
+      name: 'Sell My Archery',
+      options: Platform.isIOS
+          ? const FirebaseOptions(
+              appId: PsConfig.iosGoogleAppId,
+              messagingSenderId: PsConfig.iosGcmSenderId,
+              databaseURL: PsConfig.iosDatabaseUrl,
+              projectId: PsConfig.iosProjectId,
+              apiKey: PsConfig.iosApiKey)
+          : const FirebaseOptions(
+              appId: PsConfig.androidGoogleAppId,
+              apiKey: PsConfig.androidApiKey,
+              projectId: PsConfig.androidProjectId,
+              messagingSenderId: PsConfig.androidGcmSenderId,
+              databaseURL: PsConfig.androidDatabaseUrl,
+            ),
+    );
     // AppCheck
     await FirebaseAppCheck.instance.activate(
         androidProvider:
@@ -61,13 +61,17 @@ Future<void> main() async {
   } catch (e) {
     Utils.psPrint(e.toString());
   }
-
+//
   // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   FirebaseMessaging.onBackgroundMessage(Utils.myBackgroundMessageHandler);
 
   // NativeAdmob(adUnitID: Utils.getAdAppId());
 
   MobileAds.instance.initialize();
+  // MobileAds.instance.updateRequestConfiguration(RequestConfiguration());
+  // _createInterstitialAd();
+  // _createRewardedAd();
+  // _createRewardedInterstitialAd();
   // WidgetsFlutterBinding.ensureInitialized();
 
   if (Platform.isIOS) {
@@ -145,38 +149,38 @@ class _PSAppState extends State<PSApp> {
     // Utils.psPrint(EasyLocalization.of(context)!.locale.languageCode);
 
     return MultiProvider(
-        providers: <SingleChildWidget>[
-          ChangeNotifierProvider<AppLocalization>(
-              create: (BuildContext context) {
-            return AppLocalization.instance;
-          }),
-          ...providers,
-        ],
-        child: ThemeManager(
-            defaultBrightnessPreference: BrightnessPreference.light,
-            data: (Brightness brightness) {
-              // if (brightness == Brightness.light) {
-              return themeData(ThemeData.light());
-              // } else {
-              // return themeData(ThemeData.dark());
-              // }
-            },
-            themedWidgetBuilder: (BuildContext context, ThemeData theme) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: 'Sell My Archery',
-                theme: theme,
-                initialRoute: '/',
-                onGenerateRoute: router.generateRoute,
-                localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales:
-                    context.watch<AppLocalization>().supportedLocales,
-                locale: context.watch<AppLocalization>().currentLocale,
-              );
-            }));
+      providers: <SingleChildWidget>[
+        ChangeNotifierProvider<AppLocalization>(create: (BuildContext context) {
+          return AppLocalization.instance;
+        }),
+        ...providers,
+      ],
+      child: ThemeManager(
+        defaultBrightnessPreference: BrightnessPreference.light,
+        data: (Brightness brightness) {
+          // if (brightness == Brightness.light) {
+          return themeData(ThemeData.light());
+          // } else {
+          // return themeData(ThemeData.dark());
+          // }
+        },
+        themedWidgetBuilder: (BuildContext context, ThemeData theme) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Sell My Archery',
+            theme: theme,
+            initialRoute: '/',
+            onGenerateRoute: router.generateRoute,
+            localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: context.watch<AppLocalization>().supportedLocales,
+            locale: context.watch<AppLocalization>().currentLocale,
+          );
+        },
+      ),
+    );
   }
 }

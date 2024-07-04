@@ -143,7 +143,7 @@ class _PhoneListWidget extends State<PhoneListWidget> {
                                       .titleMedium!
                                       .copyWith(fontWeight: FontWeight.normal),
                                   decoration: InputDecoration(
-                                    hintText: '971234567',
+                                    hintText: 'Your Phone Number',
                                     hintStyle: Theme.of(context)
                                         .textTheme
                                         .bodyLarge!

@@ -81,7 +81,9 @@ class DrawerHeaderWidget extends StatelessWidget {
                     child: SizedBox(
                       height: 25,
                       width: 25,
-                      child: Image.asset('assets/images/whatsup.png'),
+                      child: Image.asset(
+                        'assets/images/whatsup.png',
+                      ),
                     ),
                   ),
                 ],
@@ -90,7 +92,7 @@ class DrawerHeaderWidget extends StatelessWidget {
           )
         ],
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
       ),
     );
