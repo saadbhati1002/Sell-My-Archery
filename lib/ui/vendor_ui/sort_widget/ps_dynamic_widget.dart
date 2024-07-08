@@ -14,7 +14,7 @@ import 'package:psxmpc/ui/custom_ui/dashboard/components/home/widgets/header_sea
 import 'package:psxmpc/ui/custom_ui/dashboard/components/home/widgets/home_discount_product_horizontal_list_widget.dart';
 import 'package:psxmpc/ui/custom_ui/dashboard/components/home/widgets/home_latest_vendor_list_widget.dart';
 import 'package:psxmpc/ui/custom_ui/dashboard/components/home/widgets/home_paid_ad_product_horizontal_list_widget.dart';
-import 'package:psxmpc/ui/custom_ui/dashboard/components/home/widgets/home_popular_product_horizontal_list_widget.dart';
+
 import 'package:psxmpc/ui/custom_ui/dashboard/components/home/widgets/nearest_product_horizontal_list_widget.dart';
 import 'package:psxmpc/ui/custom_ui/dashboard/components/home/widgets/recent_product_horizontal_list_widget.dart';
 import 'package:psxmpc/ui/custom_ui/dashboard/components/home/widgets/vendor_application_card_widget.dart';
@@ -23,12 +23,8 @@ import 'package:psxmpc/ui/custom_ui/item/detail/component/info_widgets/descripti
 import 'package:psxmpc/ui/custom_ui/item/detail/component/info_widgets/price_widget.dart';
 import 'package:psxmpc/ui/custom_ui/item/detail/component/info_widgets/title_with_favorite_edit_widget.dart';
 import 'package:psxmpc/ui/custom_ui/item/detail/component/tiles/contact_info_tile_view.dart';
-import 'package:psxmpc/ui/custom_ui/item/detail/component/tiles/faq_tile_view.dart';
-import 'package:psxmpc/ui/custom_ui/item/detail/component/tiles/safety_tips_tile_view.dart';
 import 'package:psxmpc/ui/custom_ui/item/detail/component/tiles/seller_info_tile_view.dart';
-import 'package:psxmpc/ui/custom_ui/item/detail/component/tiles/static_tile_view.dart';
 import 'package:psxmpc/ui/custom_ui/item/detail/component/tiles/store_font_info_view.dart';
-import 'package:psxmpc/ui/custom_ui/item/detail/component/tiles/terms_and_conditions_tile_view.dart';
 import 'package:psxmpc/ui/custom_ui/item/list_with_filter/components/item/widgets/filter_item_list.dart';
 import 'package:psxmpc/ui/custom_ui/item/list_with_filter/components/item/widgets/filter_nav_items.dart';
 import 'package:psxmpc/ui/custom_ui/item/related_item/component/horizontal/related_product_list_widget.dart';
@@ -47,7 +43,6 @@ import 'package:psxmpc/ui/vendor_ui/common/ps_admob_banner_widget.dart';
 import 'package:psxmpc/ui/vendor_ui/item/detail/component/custom_detail_info/custom_detail_inof_view.dart';
 import 'package:psxmpc/ui/vendor_ui/item/detail/component/info_widgets/location_widget.dart';
 import 'package:psxmpc/ui/vendor_ui/order_detail/view/order_detail_view.dart';
-import '../../custom_ui/user/top_seller/component/top_seller_horizontal_list_widget.dart';
 
 class PsDynamicWidget extends StatelessWidget {
   const PsDynamicWidget({
@@ -223,7 +218,7 @@ class PsDynamicWidget extends StatelessWidget {
       },
       'order_detail': <String, Widget>{
         PsWidgetConst.order_detail: OrderDetailView()
-      }
+      },
 
       // 'common': <String, Widget>{
       //   PsWidgetConst.search_header: CustomHomeSearchHeaderWidget(

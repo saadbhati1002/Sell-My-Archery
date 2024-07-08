@@ -60,7 +60,7 @@ class NewDialog extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         color: Utils.isLightMode(context)
                             ? PsColors.achromatic800
-                          : PsColors.achromatic50,
+                            : PsColors.achromatic50,
                         fontWeight: FontWeight.w600,
                         fontSize: 18)),
                 InkWell(
@@ -75,36 +75,41 @@ class NewDialog extends StatelessWidget {
                     )),
               ],
             ),
+            // const SizedBox(height: PsDimens.space16),
+            // PSButtonWidgetRoundCorner(
+            //   hasBorder: true,
+            //   colorData: PsColors.achromatic100,
+            //   titleTextColor: Utils.isLightMode(context)
+            //       ? Theme.of(context).primaryColor
+            //       : Utils.isLightMode(context)
+            //           ? PsColors.achromatic50
+            //           : PsColors.achromatic800,
+            //   hasShadow: false,
+            //   width: double.infinity,
+            //   titleText: 'item_promote__in_app_purchase'.tr,
+            //   onPressed: () async {
+            //     Navigator.pop(context);
+            //     widget.onInAppPurchaseTap();
+            //   },
+            // ),
             const SizedBox(height: PsDimens.space16),
             PSButtonWidgetRoundCorner(
               hasBorder: true,
               colorData: PsColors.achromatic100,
               titleTextColor: Utils.isLightMode(context)
                   ? Theme.of(context).primaryColor
-                  : Utils.isLightMode(context) ? PsColors.achromatic50 : PsColors.achromatic800,
+                  : Utils.isLightMode(context)
+                      ? PsColors.achromatic50
+                      : PsColors.achromatic800,
               hasShadow: false,
               width: double.infinity,
-              titleText: 'item_promote__in_app_purchase'.tr,
-              onPressed: () async {
-                Navigator.pop(context);
-                widget.onInAppPurchaseTap();
-              },
-            ),
-            const SizedBox(height: PsDimens.space16),
-            PSButtonWidgetRoundCorner(
-              hasBorder: true,
-              colorData: PsColors.achromatic100,
-              titleTextColor: Utils.isLightMode(context)
-                  ? Theme.of(context).primaryColor
-                  : Utils.isLightMode(context) ? PsColors.achromatic50 : PsColors.achromatic800,
-              hasShadow: false,
-              width: double.infinity,
-              titleText: 'item_promote__other'.tr,
+              titleText: 'By Package',
               onPressed: () async {
                 Navigator.pop(context);
                 widget.onOtherPaymentTap();
               },
             ),
+            const SizedBox(height: PsDimens.space16),
           ],
         ),
       ),

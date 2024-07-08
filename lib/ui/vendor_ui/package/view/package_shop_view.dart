@@ -6,6 +6,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:psxmpc/core/vendor/utils/utils.dart';
 
 import '../../../../core/vendor/api/common/ps_resource.dart';
 import '../../../../core/vendor/api/common/ps_status.dart';
@@ -26,10 +27,11 @@ import '../../common/dialog/error_dialog.dart';
 import '../../common/dialog/success_dialog.dart';
 import '../../common/ps_app_bar_widget.dart';
 import '../../common/ps_ui_widget.dart';
-
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class PackageShopInAppPurchaseView extends StatefulWidget {
-  const PackageShopInAppPurchaseView({required this.androidKeyList, required this.iosKeyList});
+  const PackageShopInAppPurchaseView(
+      {required this.androidKeyList, required this.iosKeyList});
   final String? androidKeyList;
   final String? iosKeyList;
 
@@ -42,6 +44,7 @@ class _PackageShopInAppPurchaseViewState
     extends State<PackageShopInAppPurchaseView> {
   /// Is the API available on the device
   bool available = true;
+  Razorpay _razorpay = Razorpay();
 
   /// The In App Purchase plugin
   final InAppPurchase _iap = InAppPurchase.instance;
@@ -59,7 +62,7 @@ class _PackageShopInAppPurchaseViewState
   PackageBoughtRepository? repo1;
   PsValueHolder? psValueHolder;
   PackageBoughtProvider? packageBoughtProvider;
-   late AppLocalization langProvider;
+  late AppLocalization langProvider;
 
   /// Initialize data
   Future<void> _initialize() async {
@@ -109,7 +112,7 @@ class _PackageShopInAppPurchaseViewState
   }
 
   Future<void> _listenToPurchaseUpdated(
-      List<PurchaseDetails> purchaseDetailsList) async {  
+      List<PurchaseDetails> purchaseDetailsList) async {
     for (PurchaseDetails purchaseDetails in purchaseDetailsList) {
       if (Platform.isAndroid) {
         if (!_kAutoConsume && purchaseDetails.productID == _kConsumableId) {
@@ -124,7 +127,6 @@ class _PackageShopInAppPurchaseViewState
       }
 
       if (purchaseDetails.status == PurchaseStatus.purchased) {
-        
         //
         // Call PS Server
         //
@@ -140,9 +142,11 @@ class _PackageShopInAppPurchaseViewState
                 razorId: '',
                 isPaystack: PsConst.ZERO);
         final PsResource<ApiStatus> packageBoughtStatus =
-            await packageBoughtProvider!
-                .postData(requestPathHolder: RequestPathHolder(loginUserId: psValueHolder!.loginUserId, headerToken: psValueHolder!.headerToken),
-                  requestBodyHolder: packgageBoughtParameterHolder);
+            await packageBoughtProvider!.postData(
+                requestPathHolder: RequestPathHolder(
+                    loginUserId: psValueHolder!.loginUserId,
+                    headerToken: psValueHolder!.headerToken),
+                requestBodyHolder: packgageBoughtParameterHolder);
         PsProgressDialog.dismissDialog();
         if (packageBoughtStatus.status == PsStatus.SUCCESS) {
           showDialog<dynamic>(
@@ -177,29 +181,29 @@ class _PackageShopInAppPurchaseViewState
         PurchaseParam(productDetails: productDetails);
 
     if (Platform.isIOS) {
-      //
-    }
-
-    try {
-      // if (productDetails.id == _kConsumableId) {
-      final bool status = await _iap.buyConsumable(
-          purchaseParam: purchaseParam);
-      print(status);
-      // }
-    } catch (e) {
-      print('error');
-      PsProgressDialog.dismissDialog();
-      if (Platform.isIOS) {
+      try {
+        // if (productDetails.id == _kConsumableId) {
+        final bool status =
+            await _iap.buyConsumable(purchaseParam: purchaseParam);
+        print(status);
         // }
+      } catch (e) {
+        print(e.toString());
+        print('error');
+        PsProgressDialog.dismissDialog();
+        if (Platform.isIOS) {
+          // }
+        }
       }
+    } else {
+      createPaymentRazorPay(prod);
     }
   }
 
   Package? getPackageByIAPKey(String key) {
-    final int index = packageBoughtProvider!.packageList.data!
-        .indexWhere((Package package) =>  package.coreKey!.name == key);
-    if (index == -1) 
-      return null;    
+    final int index = packageBoughtProvider!.packageList.data!.length;
+
+    // if (index == -1) return null;
     final Package package =
         packageBoughtProvider!.packageList.data!.elementAt(index);
     return package;
@@ -208,7 +212,85 @@ class _PackageShopInAppPurchaseViewState
   @override
   void initState() {
     _initialize();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     super.initState();
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    final PackgageBoughtParameterHolder packgageBoughtParameterHolder =
+        PackgageBoughtParameterHolder(
+            userId: psValueHolder!.loginUserId,
+            packageId: info!.id,
+            paymentMethod: PsConst.PAYMENT_IN_APP_PURCHASE_METHOD,
+            price: amount,
+            razorId: response.orderId,
+            isPaystack: PsConst.ZERO);
+    final PsResource<ApiStatus> packageBoughtStatus =
+        await packageBoughtProvider!.postData(
+            requestPathHolder: RequestPathHolder(
+                loginUserId: psValueHolder!.loginUserId,
+                headerToken: psValueHolder!.headerToken),
+            requestBodyHolder: packgageBoughtParameterHolder);
+    PsProgressDialog.dismissDialog();
+    if (packageBoughtStatus.status == PsStatus.SUCCESS) {
+      showDialog<dynamic>(
+          context: context,
+          builder: (BuildContext contet) {
+            return SuccessDialog(
+              message: 'item_entry__buy_package_success'.tr,
+              onPressed: () {
+                Navigator.pop(context, 20);
+              },
+            );
+          });
+    } else {
+      showDialog<dynamic>(
+          context: context,
+          builder: (BuildContext context) {
+            return ErrorDialog(
+              message: packageBoughtStatus.message,
+            );
+          });
+    }
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    showDialog<dynamic>(
+        context: context,
+        builder: (BuildContext context) {
+          return ErrorDialog(
+            message: 'Payment Failed'.tr,
+          );
+        });
+  }
+
+  ProductDetails? info;
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    // Do something when an external wallet was selected
+  }
+  createPaymentRazorPay(ProductDetails prod) async {
+    info = prod;
+    print((double.parse(Utils.getPriceTwoDecimal(prod.price)) * 100).round());
+    var options = {
+      'key': 'rzp_live_ioZ6oOzLHXpHQc',
+      'amount':
+          (double.parse(Utils.getPriceTwoDecimal(prod.price)) * 100).round(),
+      'name': '',
+      'description': 'Sell My Archery',
+    };
+    if (await Utils.checkInternetConnectivity()) {
+      return _razorpay.open(options);
+    } else {
+      showDialog<dynamic>(
+          context: context,
+          builder: (BuildContext context) {
+            return ErrorDialog(
+              message: 'error_dialog__no_internet'.tr,
+            );
+          });
+    }
   }
 
   @override
@@ -233,10 +315,10 @@ class _PackageShopInAppPurchaseViewState
                 create: (BuildContext context) {
                   packageBoughtProvider = PackageBoughtProvider(repo: repo1);
                   packageBoughtProvider!.loadDataList(
-                    requestPathHolder: RequestPathHolder(
-                      loginUserId: psValueHolder!.loginUserId,languageCode: langProvider.currentLocale.languageCode
-                    )
-                  );
+                      requestPathHolder: RequestPathHolder(
+                          loginUserId: psValueHolder!.loginUserId,
+                          languageCode:
+                              langProvider.currentLocale.languageCode));
 
                   return packageBoughtProvider;
                 },
@@ -245,11 +327,10 @@ class _PackageShopInAppPurchaseViewState
             child: Consumer<PackageBoughtProvider>(
               builder: (BuildContext context, PackageBoughtProvider provider,
                   Widget? child) {
-                if (provider.hasData) {
+                if (provider.packageList.data!.isNotEmpty) {
                   return Padding(
                     padding: const EdgeInsets.only(
-                        top: PsDimens.space10, 
-                        right: PsDimens.space8),
+                        top: PsDimens.space10, right: PsDimens.space8),
                     child: Stack(
                       children: <Widget>[
                         CustomScrollView(
@@ -263,26 +344,43 @@ class _PackageShopInAppPurchaseViewState
                                 //         childAspectRatio: 1.6),
                                 delegate: SliverChildBuilderDelegate(
                                   (BuildContext context, int index) {
-                                    final Package? package =
-                                        getPackageByIAPKey(_products[index].id);
-                                    if (package == null) {
-                                      return const SizedBox();
-                                    }    
+                                    // final Package? package =
+                                    //     getPackageByIAPKey(_products[index].id);
+                                    // if (package == null) {
+                                    //   return const SizedBox();
+                                    // }
                                     return CustomPackageItem(
-                                      package: package,
-                                      priceWithCurrency:
-                                          _products[index].price,
+                                      package:
+                                          provider.packageList.data![index],
+                                      priceWithCurrency: provider
+                                          .packageList
+                                          .data![index]
+                                          .paymentAttributes!
+                                          .price!,
                                       onTap: () {
-                                        amount = _products[index].price;
-                                        _buyProduct(_products[index]);
+                                        amount = provider
+                                            .packageList
+                                            .data![index]
+                                            .paymentAttributes!
+                                            .price!;
+                                        _buyProduct(ProductDetails(
+                                          id: provider.packageList.data![index]
+                                              .packageId!,
+                                          title: provider.packageList
+                                              .data![index].payment!.name!,
+                                          description: "",
+                                          price: amount!,
+                                          rawPrice: double.parse(amount!),
+                                          currencyCode: 'INR',
+                                        ));
                                       },
                                     );
                                   },
-                                  childCount: _products.length,
+                                  childCount: provider.packageList.data!.length,
                                 ),
                               ),
                             ]),
-                            PSProgressIndicator(provider.packageList.status)
+                        PSProgressIndicator(provider.packageList.status)
                       ],
                     ),
                   );
@@ -290,8 +388,7 @@ class _PackageShopInAppPurchaseViewState
                   return const SizedBox();
                 }
               },
-            )
-            ),
+            )),
       ),
     );
   }

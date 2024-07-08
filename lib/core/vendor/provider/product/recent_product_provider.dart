@@ -37,7 +37,7 @@ SingleChildWidget initRecentProductProvider(
       initProvider: () {
         return RecentProductProvider(
           repo: repo,
-          limit: valueHolder.categoryLoadingLimit!,
+          limit: 100,
         );
       },
       onProviderReady: (RecentProductProvider provider) {

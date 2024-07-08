@@ -107,25 +107,6 @@ class HomeBuyPackageWidgetState extends State<BuyPackageWidget> {
                                   });
                                 }
                               }),
-                          // PSButtonWidgetRoundCorner(
-                          //     colorData: PsColors.buttonColor,
-                          //     hasShadow: false,
-                          //     width: 100,
-                          //     titleText: 'Buy Now'.tr,
-                          //     onPressed: () async {
-                          //       if (await Utils.checkInternetConnectivity()) {
-                          //         Utils.navigateOnUserVerificationView(context,
-                          //             () async {
-                          //           await Navigator.pushNamed(
-                          //               context, RoutePaths.buyPackage,
-                          //               arguments: <String, dynamic>{
-                          //                 'android':
-                          //                     valueHolder!.packageAndroidKeyList,
-                          //                 'ios': valueHolder.packageIOSKeyList
-                          //               });
-                          //         });
-                          //       }
-                          //     }),
                         ],
                       ),
                     ),

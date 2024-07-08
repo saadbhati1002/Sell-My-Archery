@@ -20,6 +20,7 @@ import '../../../../custom_ui/dashboard/components/drawer/widgets/login_header_m
 import '../../../../custom_ui/dashboard/components/drawer/widgets/popular_product_menu_widget.dart';
 import '../../../../custom_ui/dashboard/components/drawer/widgets/rate_this_app_menu_widget.dart';
 import '../../../../custom_ui/dashboard/components/drawer/widgets/setting_menu_widget.dart';
+import '../../../../custom_ui/dashboard/components/drawer/widgets/membership_menu_widget.dart';
 import '../../../../custom_ui/dashboard/components/drawer/widgets/share_this_app_menu_widget.dart';
 import '../../../../custom_ui/dashboard/components/drawer/widgets/user_offers_menu_widget.dart';
 
@@ -100,6 +101,10 @@ class DrawerWidgetState<T extends DrawerWidgetList>
               height: PsDimens.space1,
             ),
             CustomSettingMenuWidget(
+              updateSelectedIndexWithAnimation:
+                  widget.updateSelectedIndexWithAnimation,
+            ),
+            CustomMembershipMenuWidget(
               updateSelectedIndexWithAnimation:
                   widget.updateSelectedIndexWithAnimation,
             ),

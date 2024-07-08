@@ -1334,10 +1334,16 @@ class PsApiService extends PsApi {
   /// Get Packages
   ///
   Future<PsResource<List<Package>>> getPackages(
-      int limit, int? offset, String loginUserId, String languageCode) async {
+    int limit,
+    int? offset,
+    String loginUserId,
+    String languageCode,
+    String headerToken,
+  ) async {
     final String url =
         '${PsUrl.ps_get_packages}login_user_id=$loginUserId&limit=$limit&offset=$offset&language_symbol=$languageCode';
-    return await getServerCall<Package, List<Package>>(Package(), url);
+    return await getServerCall<Package, List<Package>>(Package(), url,
+        headerToken: headerToken);
   }
 
   /// Reset Unread Message Count

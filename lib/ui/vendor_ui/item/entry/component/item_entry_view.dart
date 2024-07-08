@@ -110,12 +110,15 @@ class ItemEntryViewState<T extends ItemEntryView> extends State<ItemEntryView> {
                 itemEntryFieldProvider!.chooseThisProfile = true;
               } else if (widget.flag == PsConst.EDIT_ITEM) {
                 if (widget.item?.vendorId == '') {
-                  itemEntryFieldProvider!.selectedVendorId = PsConst.USER_PROFILE;
+                  itemEntryFieldProvider!.selectedVendorId =
+                      PsConst.USER_PROFILE;
                 } else {
-                  itemEntryFieldProvider!.selectedVendorId = widget.item?.vendorId; 
+                  itemEntryFieldProvider!.selectedVendorId =
+                      widget.item?.vendorId;
                 }
 
-                if (valueHolder!.vendorProfileId == itemEntryFieldProvider!.selectedVendorId) {
+                if (valueHolder!.vendorProfileId ==
+                    itemEntryFieldProvider!.selectedVendorId) {
                   itemEntryFieldProvider!.chooseThisProfile = true;
                 }
               }

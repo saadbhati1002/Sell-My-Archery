@@ -92,6 +92,9 @@ abstract class PsApi {
       {bool useHeaderToken = false, String headerToken = ''}) async {
     final Client client = http.Client();
     final Response response;
+    print("bhati");
+    print(headerToken);
+    print(PsConfig.ps_bearer_token);
     try {
       final Map<String, String>? headerTokenData = <String, String>{
         'content-type': 'application/json',
@@ -102,6 +105,7 @@ abstract class PsApi {
         Uri.parse('${PsConfig.ps_app_url}$url'),
         headers: useHeaderToken ? headerTokenData : _headers,
       );
+      print("saad bhati");
       print(response.body);
 
       final PsApiResponse psApiResponse = PsApiResponse(response);
@@ -110,12 +114,12 @@ abstract class PsApi {
       if (psApiResponse.isSuccessful) {
         print('response Success');
         final dynamic hashMap = json.decode(response.body);
-
+        print(hashMap);
         if (!(hashMap is Map)) {
           final List<T> tList = <T>[];
           hashMap.forEach((dynamic data) {
             final T temp = obj.fromMap(data);
-          tList.add(temp);
+            tList.add(temp);
             tList.add(obj.fromMap(data as dynamic));
             print(obj.fromMap(data as dynamic));
           });
@@ -149,7 +153,7 @@ abstract class PsApi {
       response = await client.post(Uri.parse('${PsConfig.ps_app_url}$url'),
           headers: useHeaderToken ? headerTokenData : _headers,
           body: const JsonEncoder().convert(jsonMap));
-
+      print(response.body);
       // response = await client
       //       .post(Uri.parse('${PsConfig.ps_app_url}$url'),
       //           headers: <String, String>{'content-type': 'application/json'},
@@ -358,77 +362,76 @@ abstract class PsApi {
     }
   }
 
-
-  Future<PsResource<R>> postUploadVendorApplication<T extends PsObject<dynamic>, R>(
-  T obj,
-  String url,
-  String emailText,
-  String email,
-  String storeNameText,
-  String storeName,
-  String coverLetterText,
-  String coverLetter,
-  String documentFileText,
-  File? documentFile, 
-  String vendorApplicationIdText,
-  String vendorApplicationId,
-  {bool useHeaderToken = false,
-  String headerToken = ''}) async {
+  Future<PsResource<R>>
+      postUploadVendorApplication<T extends PsObject<dynamic>, R>(
+          T obj,
+          String url,
+          String emailText,
+          String email,
+          String storeNameText,
+          String storeName,
+          String coverLetterText,
+          String coverLetter,
+          String documentFileText,
+          File? documentFile,
+          String vendorApplicationIdText,
+          String vendorApplicationId,
+          {bool useHeaderToken = false,
+          String headerToken = ''}) async {
     final Client client = http.Client();
-  final Map<String, String> headerTokenData = <String, String>{
-    'content-type': 'application/json',
-    'Authorization': PsConfig.ps_bearer_token,
-    'header-token': headerToken,
-  };
-  try {
-    final Uri uri = Uri.parse('${PsConfig.ps_app_url}$url');
+    final Map<String, String> headerTokenData = <String, String>{
+      'content-type': 'application/json',
+      'Authorization': PsConfig.ps_bearer_token,
+      'header-token': headerToken,
+    };
+    try {
+      final Uri uri = Uri.parse('${PsConfig.ps_app_url}$url');
 
-    final MultipartRequest request = http.MultipartRequest('POST', uri);
+      final MultipartRequest request = http.MultipartRequest('POST', uri);
 
-    // Check if documentFile is not null and has a non-empty path
-    if (documentFile != null && documentFile.path.isNotEmpty) {
-      final ByteStream stream =
-        http.ByteStream(Stream.castFrom(documentFile.openRead()));
-      final int length = await documentFile.length();
+      // Check if documentFile is not null and has a non-empty path
+      if (documentFile != null && documentFile.path.isNotEmpty) {
+        final ByteStream stream =
+            http.ByteStream(Stream.castFrom(documentFile.openRead()));
+        final int length = await documentFile.length();
 
-      final MultipartFile multipartFile = http.MultipartFile(
-        documentFileText, stream, length,
-        filename: basename(documentFile.path));
+        final MultipartFile multipartFile = http.MultipartFile(
+            documentFileText, stream, length,
+            filename: basename(documentFile.path));
 
-      request.files.add(multipartFile);
-    }
-
-    request.headers.addAll(useHeaderToken ? headerTokenData : _headers);
-    request.fields[emailText] = email;
-    request.fields[storeNameText] = storeName;
-    request.fields[coverLetterText] = coverLetter;
-    request.fields[vendorApplicationIdText] = vendorApplicationId;
-
-    final StreamedResponse response = await request.send();
-
-    final PsApiResponse psApiResponse =
-        PsApiResponse(await http.Response.fromStream(response));
-
-    if (psApiResponse.isSuccessful) {
-      final dynamic hashMap = json.decode(psApiResponse.body!);
-
-      if (!(hashMap is Map)) {
-        final List<T> tList = <T>[];
-        hashMap.forEach((dynamic data) {
-          tList.add(obj.fromMap(data));
-        });
-        return PsResource<R>(PsStatus.SUCCESS, '', tList as R? ?? R as R?);
-      } else {
-        return PsResource<R>(PsStatus.SUCCESS, '', obj.fromMap(hashMap));
+        request.files.add(multipartFile);
       }
-    } else {
-      return PsResource<R>(PsStatus.ERROR, psApiResponse.errorMessage, null);
-    }
-  } finally {
-    client.close();
-  }
-}
 
+      request.headers.addAll(useHeaderToken ? headerTokenData : _headers);
+      request.fields[emailText] = email;
+      request.fields[storeNameText] = storeName;
+      request.fields[coverLetterText] = coverLetter;
+      request.fields[vendorApplicationIdText] = vendorApplicationId;
+
+      final StreamedResponse response = await request.send();
+
+      final PsApiResponse psApiResponse =
+          PsApiResponse(await http.Response.fromStream(response));
+
+      if (psApiResponse.isSuccessful) {
+        final dynamic hashMap = json.decode(psApiResponse.body!);
+
+        if (!(hashMap is Map)) {
+          final List<T> tList = <T>[];
+          hashMap.forEach((dynamic data) {
+            tList.add(obj.fromMap(data));
+          });
+          return PsResource<R>(PsStatus.SUCCESS, '', tList as R? ?? R as R?);
+        } else {
+          return PsResource<R>(PsStatus.SUCCESS, '', obj.fromMap(hashMap));
+        }
+      } else {
+        return PsResource<R>(PsStatus.ERROR, psApiResponse.errorMessage, null);
+      }
+    } finally {
+      client.close();
+    }
+  }
 
   Future<PsResource<R>> postUploadChatImage<T extends PsObject<dynamic>, R>(
       T obj,

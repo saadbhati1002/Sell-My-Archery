@@ -226,14 +226,14 @@ class _OfflinePaymentViewState extends State<OfflinePaymentView>
                             animationController: animationController!),
                         const SliverToBoxAdapter(
                           child: SizedBox(height: PsDimens.space80),
-                        ),    
+                        ),
                       ]),
                   onRefresh: () async {
                     return _notiProvider.loadDataList(reset: true);
                   },
                 ),
                 PSProgressIndicator(provider.currentStatus),
-                CustomPayOfflineButton(onPressed: onPressed),
+                // CustomPayOfflineButton(onPressed: onPressed),
               ]);
             } else {
               return const SizedBox();

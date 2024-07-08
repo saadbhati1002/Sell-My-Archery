@@ -99,10 +99,10 @@ class PsTextFieldWidget extends StatelessWidget {
                             top: PsDimens.space8),
                         border: InputBorder.none,
                         hintText: hintText,
-                        hintStyle: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(color: PsColors.text400),
+                        hintStyle:
+                            Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                  color: Colors.brown,
+                                ),
                       )
                     : InputDecoration(
                         contentPadding: const EdgeInsets.only(
@@ -111,10 +111,10 @@ class PsTextFieldWidget extends StatelessWidget {
                             right: PsDimens.space12),
                         border: InputBorder.none,
                         hintText: hintText,
-                        hintStyle: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(color: PsColors.warning200),
+                        hintStyle:
+                            Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                  color: Colors.brown,
+                                ),
                       ))),
       ],
     );

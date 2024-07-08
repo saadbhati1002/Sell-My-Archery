@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../../vendor_ui/dashboard/components/home/widgets/buy_package_widget.dart';
-
 
 class CustomBuyPackageWidget extends StatefulWidget {
   const CustomBuyPackageWidget({
@@ -16,10 +14,11 @@ class CustomBuyPackageWidget extends StatefulWidget {
   State<StatefulWidget> createState() => HomeBuyPackageWidgetState();
 }
 
-class HomeBuyPackageWidgetState
-    extends State<CustomBuyPackageWidget> {
+class HomeBuyPackageWidgetState extends State<CustomBuyPackageWidget> {
   @override
   Widget build(BuildContext context) {
-    return BuyPackageWidget(animationController: widget.animationController,);
+    return BuyPackageWidget(
+      animationController: widget.animationController,
+    );
   }
 }

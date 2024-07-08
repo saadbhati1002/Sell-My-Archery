@@ -505,7 +505,7 @@ class PsConst {
   static const String BUMBS_UP = '2';
   static const String GOOGLE_AD = '3';
   static const String PAID_AD_GOOGLE_AD = '4';
-  static const String NORMAL_AD = '5';
+  static const String NORMAL_AD = '1';
 
   /// Google Ad
   static const String GOOGLE_AD_TYPE = 'google_ad';

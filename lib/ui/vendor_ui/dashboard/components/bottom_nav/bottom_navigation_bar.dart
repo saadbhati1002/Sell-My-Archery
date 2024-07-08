@@ -452,6 +452,7 @@ class BottomNavigationWidgetState<T extends BottomNaviationWidget>
       //the index greater than 2 need to be increased, to return the correct fragment
       param++;
     }
+
     switch (param) {
       case 0:
         index = PsConst.REQUEST_CODE__MENU_HOME_FRAGMENT;
