@@ -37,6 +37,29 @@ Future<void> main() async {
   }
 
   try {
+    if (Platform.isIOS) {
+      await Firebase.initializeApp(
+        name: 'Sell My Archery',
+      );
+    } else {
+      await Firebase.initializeApp(
+        name: 'Sell My Archery',
+        options: Platform.isIOS
+            ? const FirebaseOptions(
+                appId: PsConfig.iosGoogleAppId,
+                messagingSenderId: PsConfig.iosGcmSenderId,
+                databaseURL: PsConfig.iosDatabaseUrl,
+                projectId: PsConfig.iosProjectId,
+                apiKey: PsConfig.iosApiKey)
+            : const FirebaseOptions(
+                appId: PsConfig.androidGoogleAppId,
+                apiKey: PsConfig.androidApiKey,
+                projectId: PsConfig.androidProjectId,
+                messagingSenderId: PsConfig.androidGcmSenderId,
+                databaseURL: PsConfig.androidDatabaseUrl,
+              ),
+      );
+    }
     await Firebase.initializeApp(
       name: 'Sell My Archery',
       options: Platform.isIOS
