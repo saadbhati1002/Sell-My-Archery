@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +43,7 @@ class HomeBlogProductSliderListWidgetState
                 children: <Widget>[
                   CarouselSlider(
                     options: CarouselOptions(
-                      height: 190,
+                      height: Platform.isIOS ? 220 : 190,
                       enlargeCenterPage: true,
                       autoPlay: valueHolder.isSliderAutoPlay!,
                       viewportFraction: 1,

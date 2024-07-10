@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:psxmpc/core/vendor/utils/utils.dart';
+import 'package:psxmpc/ui/custom_ui/user/login/component/widgets/login_with_apple_widget.dart';
 import 'package:psxmpc/ui/vendor_ui/user/login/component/widgets/remember_me_widget.dart';
 
 import '../../../../../config/route/route_paths.dart';
@@ -132,11 +134,11 @@ class _LoginViewState extends State<LoginView> {
                   onFbSignInSelected: widget.onFbSignInSelected,
                   callBackAfterLoginSuccess: callBackAfterLoginSuccess,
                 ),
-              // if (Utils.isAppleSignInAvailable == 1 && Platform.isIOS)
-              //   CustomLoginWithAppleIdWidget(
-              //     onAppleIdSignInSelected: widget.onGoogleSignInSelected,
-              //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
-              //   ),
+              if (Utils.isAppleSignInAvailable == 1 && Platform.isIOS)
+                CustomLoginWithAppleIdWidget(
+                  onAppleIdSignInSelected: widget.onGoogleSignInSelected,
+                  callBackAfterLoginSuccess: callBackAfterLoginSuccess,
+                ),
               const SizedBox(
                 height: PsDimens.space44,
               ),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psxmpc/core/vendor/utils/ps_animation.dart';
@@ -21,8 +23,9 @@ class CategoryVerticalListWidget extends StatelessWidget {
       return (provider.hasData ||
               provider.currentStatus == PsStatus.BLOCK_LOADING)
           ? SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 100.0, childAspectRatio: 0.8),
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 100.0,
+                  childAspectRatio: Platform.isIOS ? 0.73 : 0.8),
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   return CustomCategoryVerticalListItem(

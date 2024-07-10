@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../../../../../../config/route/route_paths.dart';
 import '../../../../../../core/vendor/constant/ps_constants.dart';
@@ -17,7 +19,7 @@ class BlogSliderItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: 190,
+          height: Platform.isIOS ? 220 : 190,
           child: PsNetworkImage(
               photoKey: '',
               boxfit: BoxFit.cover,

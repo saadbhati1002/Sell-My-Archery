@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psxmpc/config/ps_colors.dart';
@@ -58,7 +60,9 @@ class CategoryVerticalListItem extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.circular(PsDimens.space6),
                             child: Container(
-                              height: MediaQuery.of(context).size.height * .1,
+                              height: Platform.isIOS
+                                  ? MediaQuery.of(context).size.height * .085
+                                  : MediaQuery.of(context).size.height * .1,
                               width: 75,
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 10),

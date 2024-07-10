@@ -130,8 +130,6 @@ class _PackageShopInAppPurchaseViewState
         //
         // Call PS Server
         //
-        print('NEW PURCHASE');
-        print(purchaseDetails.status);
         final Package package = getPackageByIAPKey(purchaseDetails.productID)!;
         final PackgageBoughtParameterHolder packgageBoughtParameterHolder =
             PackgageBoughtParameterHolder(
@@ -180,24 +178,24 @@ class _PackageShopInAppPurchaseViewState
     final PurchaseParam purchaseParam =
         PurchaseParam(productDetails: productDetails);
 
-    if (Platform.isIOS) {
-      try {
-        // if (productDetails.id == _kConsumableId) {
-        final bool status =
-            await _iap.buyConsumable(purchaseParam: purchaseParam);
-        print(status);
-        // }
-      } catch (e) {
-        print(e.toString());
-        print('error');
-        PsProgressDialog.dismissDialog();
-        if (Platform.isIOS) {
-          // }
-        }
-      }
-    } else {
-      createPaymentRazorPay(prod);
-    }
+    // if (Platform.isIOS) {
+    //   try {
+    //     // if (productDetails.id == _kConsumableId) {
+    //     final bool status =
+    //         await _iap.buyConsumable(purchaseParam: purchaseParam);
+    //     print(status);
+    //     // }
+    //   } catch (e) {
+    //     print(e.toString());
+    //     print('error');
+    //     PsProgressDialog.dismissDialog();
+    //     if (Platform.isIOS) {
+    //       // }
+    //     }
+    //   }
+    // } else {
+    createPaymentRazorPay(prod);
+    // }
   }
 
   Package? getPackageByIAPKey(String key) {
