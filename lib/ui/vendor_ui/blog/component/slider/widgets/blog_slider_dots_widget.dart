@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psxmpc/config/ps_colors.dart';
@@ -12,7 +14,7 @@ class BlogSliderDotsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final BlogProvider blogProvider = Provider.of<BlogProvider>(context);
     return Positioned(
-        top: 170.0,
+        top: Platform.isIOS ? 200 : 170.0,
         left: 0.0,
         right: 0.0,
         child: Row(

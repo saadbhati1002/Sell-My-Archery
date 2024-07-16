@@ -131,7 +131,8 @@ class _UserVerticalListItemState extends State<UserVerticalListItem> {
                                                 fontSize: 14,
                                                 color:
                                                     Utils.isLightMode(context)
-                                                        ? PsColors.text800 : PsColors.text50,
+                                                        ? PsColors.text800
+                                                        : PsColors.text50,
                                                 fontWeight: FontWeight.w600)),
                                   ),
                                   if (widget.user.isVefifiedBlueMarkUser)
@@ -148,7 +149,8 @@ class _UserVerticalListItemState extends State<UserVerticalListItem> {
                                         .copyWith(
                                             fontSize: 12,
                                             color: Utils.isLightMode(context)
-                                                ? PsColors.text800 : PsColors.text50,
+                                                ? PsColors.text800
+                                                : PsColors.text50,
                                             fontWeight: FontWeight.w400))
                               else
                                 const SizedBox(height: PsDimens.space2),
@@ -183,7 +185,8 @@ class _UserVerticalListItemState extends State<UserVerticalListItem> {
                                             .textTheme
                                             .labelLarge!
                                             .copyWith(
-                                                color: Theme.of(context).primaryColor),
+                                                color: Theme.of(context)
+                                                    .primaryColor),
                                       )
                                     : Text(
                                         'profile__follow'.tr,
@@ -192,10 +195,13 @@ class _UserVerticalListItemState extends State<UserVerticalListItem> {
                                             .textTheme
                                             .labelLarge!
                                             .copyWith(
-                                                color:
-                                                    Utils.isLightMode(context)
-                                                        ? PsColors.text50
-                                                        : Utils.isLightMode(context) ? PsColors.achromatic50 : PsColors.achromatic800),
+                                                color: Utils.isLightMode(
+                                                        context)
+                                                    ? PsColors.text50
+                                                    : Utils.isLightMode(context)
+                                                        ? PsColors.achromatic50
+                                                        : PsColors
+                                                            .achromatic800),
                                       ),
                                 onPressed: () async {
                                   if (await Utils.checkInternetConnectivity()) {

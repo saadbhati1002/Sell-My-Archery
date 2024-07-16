@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psxmpc/config/ps_colors.dart';
+import 'package:psxmpc/ui/vendor_ui/common/ps_admob_banner_widget.dart';
 
 import '../../../../../../../core/vendor/constant/ps_dimens.dart';
 import '../../../../../../../core/vendor/provider/product/item_entry_provider.dart';
@@ -46,117 +47,124 @@ class LocationWidget extends StatelessWidget {
                       .selectedValues?[0]
                       .value !=
                   '';
-          return Container(
-            margin: const EdgeInsets.only(
-                top: PsDimens.space12,
-                left: PsDimens.space16,
-                right: PsDimens.space16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                InkWell(
-                  onTap: () async {
-                    if (psValueHolder.isUseGoogleMap!) {
-                      await Navigator.pushNamed(
-                          context, RoutePaths.googleMapPin,
-                          arguments: MapPinIntentHolder(
-                              flag: PsConst.VIEW_MAP,
-                              mapLat: product.lat,
-                              mapLng: product.lng));
-                    } else {
-                      await Navigator.pushNamed(context, RoutePaths.mapPin,
-                          arguments: MapPinIntentHolder(
-                              flag: PsConst.VIEW_MAP,
-                              mapLat: product.lat,
-                              mapLng: product.lng));
-                    }
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
+          return Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(
+                    top: PsDimens.space12,
+                    left: PsDimens.space16,
+                    right: PsDimens.space16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () async {
+                        if (psValueHolder.isUseGoogleMap!) {
+                          await Navigator.pushNamed(
+                              context, RoutePaths.googleMapPin,
+                              arguments: MapPinIntentHolder(
+                                  flag: PsConst.VIEW_MAP,
+                                  mapLat: product.lat,
+                                  mapLng: product.lng));
+                        } else {
+                          await Navigator.pushNamed(context, RoutePaths.mapPin,
+                              arguments: MapPinIntentHolder(
+                                  flag: PsConst.VIEW_MAP,
+                                  mapLat: product.lat,
+                                  mapLng: product.lng));
+                        }
+                      },
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const Icon(
-                            Icons.location_on_outlined,
-                            size: 24,
-                          ),
-                          const SizedBox(
-                            width: PsDimens.space8,
-                          ),
-                          if (showCustomDataAddress)
-                            Text(
-                              product.productRelation
-                                      ?.elementAt(index2)
-                                      .selectedValues?[0]
-                                      .value ??
-                                  '',
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(
-                                    fontSize: 16,
-                                  ),
-                              maxLines: 2,
-                            )
-                          else
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              const Icon(
+                                Icons.location_on_outlined,
+                                size: 24,
+                              ),
+                              const SizedBox(
+                                width: PsDimens.space8,
+                              ),
+                              if (showCustomDataAddress)
                                 Text(
-                                  product.itemLocationTownship!.townshipName ??
-                                      ' ',
+                                  product.productRelation
+                                          ?.elementAt(index2)
+                                          .selectedValues?[0]
+                                          .value ??
+                                      '',
+                                  overflow: TextOverflow.ellipsis,
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyLarge!
                                       .copyWith(
                                         fontSize: 16,
                                       ),
-                                ),
-                                Text(
-                                  product.itemLocation!.name ?? ' ',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge!
-                                      .copyWith(
-                                        fontSize: 16,
-                                      ),
-                                ),
-                              ],
-                            )
+                                  maxLines: 2,
+                                )
+                              else
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      product.itemLocationTownship!
+                                              .townshipName ??
+                                          ' ',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                            fontSize: 16,
+                                          ),
+                                    ),
+                                    Text(
+                                      product.itemLocation!.name ?? ' ',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                            fontSize: 16,
+                                          ),
+                                    ),
+                                  ],
+                                )
+                            ],
+                          ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                if (showCustomData)
-                  Container(
-                    decoration: BoxDecoration(
-                      color: PsColors.error50, //PsColors.primary50,
-                      borderRadius: BorderRadius.circular(PsDimens.space6),
                     ),
-                    height: 28,
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                    child: Center(
-                      child: Text(
-                        product.productRelation
-                                ?.elementAt(index)
-                                .selectedValues?[0]
-                                .value ??
-                            '',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                              color: PsColors.error600,
-                              fontSize: 16,
-                            ),
+                    if (showCustomData)
+                      Container(
+                        decoration: BoxDecoration(
+                          color: PsColors.error50, //PsColors.primary50,
+                          borderRadius: BorderRadius.circular(PsDimens.space6),
+                        ),
+                        height: 28,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 2, horizontal: 8),
+                        child: Center(
+                          child: Text(
+                            product.productRelation
+                                    ?.elementAt(index)
+                                    .selectedValues?[0]
+                                    .value ??
+                                '',
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: PsColors.error600,
+                                      fontSize: 16,
+                                    ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-              ],
-            ),
+                  ],
+                ),
+              ),
+              const PsAdMobBannerWidget(),
+            ],
           );
         } else
           return const SizedBox();

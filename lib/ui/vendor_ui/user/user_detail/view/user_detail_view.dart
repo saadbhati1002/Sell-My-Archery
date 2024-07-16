@@ -117,7 +117,9 @@ class _UserDetailViewState extends State<UserDetailView>
         child: Text('profile__listing'.tr,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontSize: 18,
-                color: Utils.isLightMode(context) ? PsColors.text900: PsColors.text100,
+                color: Utils.isLightMode(context)
+                    ? PsColors.text900
+                    : PsColors.text100,
                 fontWeight: FontWeight.w600)),
       ),
     );

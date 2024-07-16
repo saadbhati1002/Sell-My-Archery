@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:psxmpc/core/vendor/constant/ps_constants.dart';
+import 'package:psxmpc/ui/vendor_ui/common/ps_admob_native_widget.dart';
 
 import '../../../../../core/vendor/api/common/ps_status.dart';
 import '../../../../../core/vendor/provider/product/added_item_provider.dart';
@@ -28,15 +30,30 @@ class OtherUserProductList extends StatelessWidget {
           childAspectRatio: valueHolder.isShowOwnerInfo! ? 0.6 : 0.72),
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          return CustomProductVeticalListItem(
-            isLoading: isLoading,
-            coreTagKey: addedItemProvider.hashCode.toString(),
-            product:
-                isLoading ? Product() : addedItemProvider.getListIndexOf(index),
-            animation:
-                curveAnimation(animationController, index: index, count: count),
-            animationController: animationController,
-          );
+          if (addedItemProvider.getListIndexOf(index).originalPrice == '' ||
+              addedItemProvider.getListIndexOf(index).originalPrice == '0') {
+            return const PsAdMobNativeWidget();
+          } else {
+            return CustomProductVeticalListItem(
+              isLoading: isLoading,
+              coreTagKey: addedItemProvider.hashCode.toString(),
+              product: isLoading
+                  ? Product()
+                  : addedItemProvider.getListIndexOf(index),
+              animation: curveAnimation(animationController,
+                  index: index, count: count),
+              animationController: animationController,
+            );
+          }
+          // return CustomProductVeticalListItem(
+          //   isLoading: isLoading,
+          //   coreTagKey: addedItemProvider.hashCode.toString(),
+          //   product:
+          //       isLoading ? Product() : addedItemProvider.getListIndexOf(index),
+          //   animation:
+          //       curveAnimation(animationController, index: index, count: count),
+          //   animationController: animationController,
+          // );
         },
         childCount: count,
       ),

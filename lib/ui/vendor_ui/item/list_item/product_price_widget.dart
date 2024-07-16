@@ -54,7 +54,9 @@ class ProductPriceWidget extends StatelessWidget {
                                   color: Theme.of(context).primaryColor),
                         )),
                   ),
-                  const SizedBox(height: 5,)
+                  const SizedBox(
+                    height: 5,
+                  )
                   /*Visibility(
                       maintainSize: true,
                       maintainAnimation: true,

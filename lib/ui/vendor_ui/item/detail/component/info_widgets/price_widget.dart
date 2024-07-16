@@ -4,6 +4,7 @@ import 'package:psxmpc/config/ps_colors.dart';
 import 'package:psxmpc/core/vendor/constant/ps_constants.dart';
 import 'package:psxmpc/core/vendor/viewobject/product_relation.dart';
 import 'package:psxmpc/ui/vendor_ui/common/price_dollar.dart';
+import 'package:psxmpc/ui/vendor_ui/common/ps_admob_banner_widget.dart';
 
 import '../../../../../../../core/vendor/constant/ps_dimens.dart';
 import '../../../../../../../core/vendor/provider/language/app_localization_provider.dart';
@@ -112,15 +113,20 @@ class PriceWidget extends StatelessWidget {
                   selector: (_, ItemDetailProvider provider) =>
                       provider.quantity,
                   builder: (_, int? qty, __) {
-                    return (qty == null)?const SizedBox() : Text(
-                      '$qty Items In Stock',
-                      textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Utils.isLightMode(context)
-                              ? PsColors.text700
-                              : PsColors.text300,
-                          fontSize: 14),
-                    );
+                    return (qty == null)
+                        ? const SizedBox()
+                        : Text(
+                            '$qty Items In Stock',
+                            textAlign: TextAlign.start,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                    color: Utils.isLightMode(context)
+                                        ? PsColors.text700
+                                        : PsColors.text300,
+                                    fontSize: 14),
+                          );
                   }),
           ],
         ),

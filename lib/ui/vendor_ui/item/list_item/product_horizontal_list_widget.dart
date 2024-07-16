@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:psxmpc/ui/vendor_ui/common/ps_admob_native_widget.dart';
 
 import '../../../../../../../core/vendor/constant/ps_dimens.dart';
 import '../../../../../../../core/vendor/viewobject/common/ps_value_holder.dart';
@@ -68,7 +69,7 @@ class ProductHorizontalListWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           if (!isLoading &&
               productList![index].adType == PsConst.GOOGLE_AD_TYPE) {
-            return const SizedBox();
+            return const PsAdMobNativeWidget();
           }
           return CustomProductHorizontalListItem(
             tagKey: tagKey,
