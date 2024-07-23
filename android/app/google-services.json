@@ -1,49 +1,50 @@
 {
   "project_info": {
-    "project_number": "828252791763",
-    "project_id": "sell-my-archery-d93be",
-    "storage_bucket": "sell-my-archery-d93be.appspot.com"
+    "project_number": "193514998470",
+    "firebase_url": "https://sellmyarchery-default-rtdb.firebaseio.com",
+    "project_id": "sellmyarchery",
+    "storage_bucket": "sellmyarchery.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:828252791763:android:469a3a04d8a18728194526",
+        "mobilesdk_app_id": "1:193514998470:android:36a0ca91e49b2923ed25c7",
         "android_client_info": {
-          "package_name": "com.sellmyarchery.customer"
+          "package_name": "com.sellmyarchery.sma"
         }
       },
       "oauth_client": [
         {
-          "client_id": "828252791763-24kca4kjdboc1ikqjd6bb4qjr2i2q818.apps.googleusercontent.com",
+          "client_id": "193514998470-32jbod7se23brtu19ljc2nbe0gg3jgc9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.sellmyarchery.customer",
-            "certificate_hash": "83eb768be06325ca5460f4d4dd95b8c0270403eb"
-          }
-        },
-        {
-          "client_id": "828252791763-jg3b2fnt6u1g8qr0hjva0abernn15gm2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.sellmyarchery.customer",
+            "package_name": "com.sellmyarchery.sma",
             "certificate_hash": "18eebd7230ca0f227f90c010ce61042a5e23df89"
           }
         },
         {
-          "client_id": "828252791763-1m1cf69rvkt657sjkrbufqmqed2hq9bp.apps.googleusercontent.com",
+          "client_id": "193514998470-3fvvmm7lgf06eg493g9gjmd877sdd561.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sellmyarchery.sma",
+            "certificate_hash": "83eb768be06325ca5460f4d4dd95b8c0270403eb"
+          }
+        },
+        {
+          "client_id": "193514998470-8coaf56d35o4kvq0ns8gfq86q85pgh15.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBGgjomQ1Pu8wuRRrq7yip4GRMaEqtrRcI"
+          "current_key": "AIzaSyBdHBsW0_QzE2iircbp6hFGGhswWOoOy2c"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "828252791763-1m1cf69rvkt657sjkrbufqmqed2hq9bp.apps.googleusercontent.com",
+              "client_id": "193514998470-8coaf56d35o4kvq0ns8gfq86q85pgh15.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
