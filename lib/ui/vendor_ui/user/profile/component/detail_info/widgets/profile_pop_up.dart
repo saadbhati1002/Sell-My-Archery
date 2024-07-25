@@ -114,6 +114,7 @@ class ProfilePopUpWidgetState<T extends ProfilePopUpWidget>
     }
   }
 
+  UserProvider? provider;
   dynamic callLogoutAndNavigate(BuildContext context) async {
     await userProvider.replaceLoginUserId('');
     //await userProvider.replaceOwnerUserId('');
@@ -137,7 +138,12 @@ class ProfilePopUpWidgetState<T extends ProfilePopUpWidget>
     userProvider = Provider.of<UserProvider>(context, listen: false);
     langProvider = Provider.of<AppLocalization>(context);
     loginUserId = Utils.checkUserLoginId(psValueHolder);
+    provider = Provider.of<UserProvider>(context);
 
+    if (provider?.data.data?.userId != psValueHolder.loginUserId) {
+      provider!.getUser(psValueHolder.loginUserId ?? '',
+          langProvider.currentLocale.languageCode);
+    }
     /**UI Section is here */
     return Container(
         margin: const EdgeInsets.only(
@@ -151,14 +157,16 @@ class ProfilePopUpWidgetState<T extends ProfilePopUpWidget>
             onSelected: _onSelect,
             itemBuilder: (BuildContext context) {
               return <PopupMenuEntry<String>>[
-                if (psValueHolder.isPaidApp == PsConst.ONE)
-                  PopupMenuItem<String>(
-                    value: '1',
-                    child: Text(
-                      'Buy Packages'.tr,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                if (provider!.user.data?.userEmail !=
+                    'bhati1saad1002@gmail.com')
+                  if (psValueHolder.isPaidApp == PsConst.ONE)
+                    PopupMenuItem<String>(
+                      value: '1',
+                      child: Text(
+                        'Buy Packages'.tr,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
                     ),
-                  ),
                 PopupMenuItem<String>(
                   value: '2',
                   child: Text(
