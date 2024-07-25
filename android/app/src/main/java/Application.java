@@ -1,4 +1,4 @@
-package com.sellmyarchery.customer;
+package com.sellmyarchery.sma;
 
  import io.flutter.app.FlutterApplication;
  import io.flutter.plugin.common.PluginRegistry;
