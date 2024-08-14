@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>828252791763-vh77tug3i95ralktb5ethssc2m826eju.apps.googleusercontent.com</string>
+	<string>193514998470-0vdlsng3l13vngj6khhrpc98hkg570iq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.828252791763-vh77tug3i95ralktb5ethssc2m826eju</string>
+	<string>com.googleusercontent.apps.193514998470-0vdlsng3l13vngj6khhrpc98hkg570iq</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>828252791763-24kca4kjdboc1ikqjd6bb4qjr2i2q818.apps.googleusercontent.com</string>
+	<string>193514998470-32jbod7se23brtu19ljc2nbe0gg3jgc9.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCZPl7AL-VjCv6eEtp21QsRpaA0fXHv_Wc</string>
+	<string>AIzaSyBnihUtRvnJ1S_xo_35j8tNo4snaoP2C-k</string>
 	<key>GCM_SENDER_ID</key>
-	<string>828252791763</string>
+	<string>193514998470</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.sellmyarchery</string>
 	<key>PROJECT_ID</key>
-	<string>sell-my-archery-d93be</string>
+	<string>sellmyarchery</string>
 	<key>STORAGE_BUCKET</key>
-	<string>sell-my-archery-d93be.appspot.com</string>
+	<string>sellmyarchery.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:828252791763:ios:c830ec31b8857efe194526</string>
+	<string>1:193514998470:ios:004aae0a91b6242ced25c7</string>
+	<key>DATABASE_URL</key>
+	<string>https://sellmyarchery-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
