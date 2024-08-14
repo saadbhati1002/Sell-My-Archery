@@ -52,6 +52,7 @@ class DrawerWidgetState<T extends DrawerWidgetList>
       child: Consumer<UserProvider>(
         builder: (BuildContext context, UserProvider provider, Widget? child) {
           print(provider.psValueHolder!.loginUserId);
+          print("ssa bhati ${provider.user.data?.userEmail}");
           /**
              * UI SECTION 
              */
@@ -104,10 +105,12 @@ class DrawerWidgetState<T extends DrawerWidgetList>
               updateSelectedIndexWithAnimation:
                   widget.updateSelectedIndexWithAnimation,
             ),
-            CustomMembershipMenuWidget(
-              updateSelectedIndexWithAnimation:
-                  widget.updateSelectedIndexWithAnimation,
-            ),
+            if (provider.user.data?.userEmail != null)
+              if (provider.user.data?.userEmail != '')
+                CustomMembershipMenuWidget(
+                  updateSelectedIndexWithAnimation:
+                      widget.updateSelectedIndexWithAnimation,
+                ),
             CustomContactUsMenuWidget(
               updateSelectedIndexWithAnimation:
                   widget.updateSelectedIndexWithAnimation,
