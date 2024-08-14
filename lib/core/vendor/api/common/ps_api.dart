@@ -92,9 +92,7 @@ abstract class PsApi {
       {bool useHeaderToken = false, String headerToken = ''}) async {
     final Client client = http.Client();
     final Response response;
-    print("bhati");
-    print(headerToken);
-    print(PsConfig.ps_bearer_token);
+
     try {
       final Map<String, String>? headerTokenData = <String, String>{
         'content-type': 'application/json',
@@ -105,8 +103,6 @@ abstract class PsApi {
         Uri.parse('${PsConfig.ps_app_url}$url'),
         headers: useHeaderToken ? headerTokenData : _headers,
       );
-      print("saad bhati");
-      print(response.body);
 
       final PsApiResponse psApiResponse = PsApiResponse(response);
       printGetLog(psApiResponse, response);
@@ -154,6 +150,7 @@ abstract class PsApi {
           headers: useHeaderToken ? headerTokenData : _headers,
           body: const JsonEncoder().convert(jsonMap));
       print(response.body);
+      print("mohd saad bhati1");
       // response = await client
       //       .post(Uri.parse('${PsConfig.ps_app_url}$url'),
       //           headers: <String, String>{'content-type': 'application/json'},

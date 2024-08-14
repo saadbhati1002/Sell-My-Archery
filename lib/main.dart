@@ -160,7 +160,6 @@ class _PSAppState extends State<PSApp> {
     for (final Language lang in PsConfig.psSupportedLanguageList) {
       localeList.add(Locale(lang.languageCode!, lang.countryCode));
     }
-    print('Loaded Languages');
     return localeList;
   }
 
