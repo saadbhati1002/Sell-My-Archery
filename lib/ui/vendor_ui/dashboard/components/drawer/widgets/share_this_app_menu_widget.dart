@@ -45,15 +45,6 @@ class ShareThisAppMenuWidget extends StatelessWidget {
                 Rect.fromLTWH(0, 0, size.width, size.height / 2),
           );
         }
-        // showDialog<dynamic>(
-        //     context: context,
-        //     builder: (BuildContext context) {
-        //       return ShareAppDialog(
-        //         onPressed: () {
-        //           Navigator.pop(context, true);
-        //         },
-        //       );
-        //     });
       },
     );
   }
