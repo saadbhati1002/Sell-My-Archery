@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:psxmpc/config/ps_colors.dart';
 import 'package:share_plus/share_plus.dart';
-
+import 'package:dio/dio.dart';
 import '../../../../../../../config/route/route_paths.dart';
 import '../../../../../../../core/vendor/api/common/ps_resource.dart';
 import '../../../../../../../core/vendor/api/common/ps_status.dart';
@@ -19,6 +22,7 @@ import '../../../../../../../core/vendor/viewobject/holder/user_report_item_para
 import '../../../../../../../core/vendor/viewobject/product.dart';
 import '../../../../../common/dialog/confirm_dialog_view.dart';
 import '../../../../../common/dialog/error_dialog.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 class PopUpMenuWidget extends StatefulWidget {
   const PopUpMenuWidget();
@@ -121,11 +125,43 @@ class PopUpMenuWidgetState<T extends PopUpMenuWidget>
       case '3':
         final Size size = MediaQuery.of(context).size;
         if (currentProduct.dynamicLink != null) {
-          Share.share(
-            'Go to App:\n' + currentProduct.dynamicLink!,
-            sharePositionOrigin:
-                Rect.fromLTWH(0, 0, size.width, size.height / 2),
-          );
+          if (currentProduct.defaultPhoto?.imgPath != null) {
+            final appDocDir = await getTemporaryDirectory();
+
+            final String savePath = appDocDir.path +
+                "/image.${currentProduct.defaultPhoto!.imgPath!.split(".").last}";
+
+            final String fileUrl =
+                "https://www.sellmyarchery.com/public/storage/PSX_MPC/thumbnail2x/" +
+                    currentProduct.defaultPhoto!.imgPath!;
+
+            await Dio().download(fileUrl, savePath);
+            final result = await ImageGallerySaver.saveFile(savePath,
+                isReturnPathOfIOS: true);
+
+            try {
+              final File imageFile = File(savePath);
+              print(await imageFile.exists());
+              if (await imageFile.exists()) {
+                var response = await Share.shareXFiles(
+                  [XFile(savePath)],
+                  subject: currentProduct.title,
+                  text: 'Check This Item Details:\n${currentProduct.title}\n' +
+                      currentProduct.dynamicLink!,
+                  sharePositionOrigin:
+                      Rect.fromLTWH(0, 0, size.width, size.height / 2),
+                );
+              }
+            } catch (e) {
+              debugPrint(e.toString());
+            }
+          } else {
+            Share.share(
+              'Check This Item Details:\n' + currentProduct.dynamicLink!,
+              sharePositionOrigin:
+                  Rect.fromLTWH(0, 0, size.width, size.height / 2),
+            );
+          }
         }
         break;
       default:
@@ -153,8 +189,9 @@ class PopUpMenuWidgetState<T extends PopUpMenuWidget>
         ),
         child: Theme(
           data: Theme.of(context).copyWith(
-              iconTheme:
-                  Theme.of(context).iconTheme.copyWith(color: PsColors.achromatic50)),
+              iconTheme: Theme.of(context)
+                  .iconTheme
+                  .copyWith(color: PsColors.achromatic50)),
           child: PopupMenuButton<String>(
             onSelected: _onSelect,
             itemBuilder: (BuildContext context) {

@@ -24,7 +24,7 @@
         tools:replace="android:label"
         android:label="Sell My Archery"
         android:usesCleartextTraffic="true"
-           
+        android:requestLegacyExternalStorage="true" 
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDcr5WtDuAsJS2aZRe-5OTD39sZ6iUrHYk"/>
